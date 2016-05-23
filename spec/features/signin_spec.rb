@@ -9,10 +9,18 @@ feature "signing in" do
     click_button "Log in"
   end
 
-scenario "visiting the site to sign in" do
+  scenario "visiting the site to sign in" do
     visit root_path
     click_link "Sign in"
     fill_in_signin_fields
     expect(page).to have_content("Signed in successfully.")
+  end
+
+  scenario "signing out" do
+    visit root_path
+    click_link "Sign in"
+    fill_in_signin_fields
+    click_link "Sign out"
+    expect(page).to have_content("Signed out successfully.")
   end
 end
