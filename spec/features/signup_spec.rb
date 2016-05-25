@@ -9,10 +9,10 @@ feature "sign up" do
     click_button "Sign up"
   end
 
-  # scenario "visiting the site to sign up" do
-  #   visit root_path
-  #   click_link "Sign up"
-  #   fill_in_signup_fields
-  #   expect(page).to have_content("You have signed up successfully.")
-  # end
+  scenario "visiting the site to sign up" do
+    visit root_path
+    click_link "Sign up"
+    fill_in_signup_fields
+    expect(page).to have_content("You have signed up successfully.")
+  end
 end
