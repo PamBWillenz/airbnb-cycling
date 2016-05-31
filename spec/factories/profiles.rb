@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :profile do
     bio "MyText"
-    member nil
+    member_id 1
     name "MyString"
   end
 end
