@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 feature "sign up" do
-  # let(:member) {FactoryGirl.create(:member)}
+  let(:member) {FactoryGirl.create(:member)}
   
   def fill_in_signup_fields
+    fill_in "member[name]", with: "cyclist01"
     fill_in "member[email]", with: "cyclist01@member.bnb"
-    fill_in "member[password]", with: "cyclist01"
+    fill_in "member[password]", with: member.password
     click_button "Sign up"
   end
 

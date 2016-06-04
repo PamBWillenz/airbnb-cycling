@@ -5,11 +5,12 @@ feature "profiles" do
 
   def fill_in_fields
     fill_in "member[name]", with: "Jane Doe"
+    fill_in "profile", with: FFaker::Lorem.paragraph(2)
   end
- 
+   
   scenario "member creates profile" do
     visit new_member_profile_path(member)
-    fill_in "profile[bio]", with: FFaker::Lorem.paragraph(2)
+    fill_in "profile", with: FFaker::Lorem.paragraph(2)
     click_button "Create Profile"
     expect(page).to have_content("Profile was successfully created.")
   end
