@@ -11,8 +11,9 @@ feature "profiles" do
   scenario "member creates profile" do
     login_as(member, :scope => :member)
     visit new_member_profile_path(member)
+    expect(page).to have_content "Profiles"
     fill_in "profile[bio]", with: FFaker::Lorem.paragraph(2)
     click_button "Create Profile"
-    expect(page).to have_content("Profile was successfully created.")
+    expect(page).to have_content("You successfully created your profile.")
   end
 end
