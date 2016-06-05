@@ -32,6 +32,8 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
+  config.include Warden::Test::Helpers
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -40,6 +42,7 @@ RSpec.configure do |config|
 config.before(:suite) do
       DatabaseCleaner.strategy = :truncation
       DatabaseCleaner.clean_with(:truncation)
+      Warden.test_mode!
     end 
 
     config.before(:each) do
@@ -48,6 +51,7 @@ config.before(:suite) do
 
     config.after(:each) do
       DatabaseCleaner.clean
+      Warden.test_reset!
     end
 
 config.include SimpleBdd, type: :feature
