@@ -1,4 +1,4 @@
-class Profile < ActiveRecord::Base
+class Profile < ApplicationRecord
   validates_presence_of :bio
   validates_presence_of :member_id
   
