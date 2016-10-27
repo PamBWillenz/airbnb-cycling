@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530205142) do
+ActiveRecord::Schema.define(version: 20161027175947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,20 +29,22 @@ ActiveRecord::Schema.define(version: 20160530205142) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
+    t.index ["email"], name: "index_members_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
-  add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.text     "bio"
     t.integer  "member_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "profile_pic_file_name"
+    t.string   "profile_pic_content_type"
+    t.integer  "profile_pic_file_size"
+    t.datetime "profile_pic_updated_at"
+    t.index ["member_id"], name: "index_profiles_on_member_id", using: :btree
   end
-
-  add_index "profiles", ["member_id"], name: "index_profiles_on_member_id", using: :btree
 
   add_foreign_key "profiles", "members"
 end

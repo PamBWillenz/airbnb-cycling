@@ -34,6 +34,6 @@ end
 private
 
   def profile_params
-    params.required(:profile).permit(:name, :bio, :member_id)
+    params.required(:profile).permit(:name, :bio, :member_id, :profile_pic)
   end
 end

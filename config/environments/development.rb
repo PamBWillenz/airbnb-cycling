@@ -46,7 +46,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
   # ImageMagick config for Paperclip
-  Paperclip.options[:command_path] = "/usr/local/Cellar/"
+  Paperclip.options[:command_path] = "/usr/local/bin/convert"
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
