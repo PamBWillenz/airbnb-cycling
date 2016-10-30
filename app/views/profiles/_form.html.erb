@@ -1,17 +1,19 @@
-  <%= form_for [current_member, @profile], html: { multipart: true} do |f| %>
+<%= form_for [@member, @profile], html: { multipart: true} do |f| %>
+<div>
   <div>
     <%= f.text_area :bio, placeholder: "Enter bio" %>
    <br>
-    <div>
+  </div>
     <div>
       <%= f.file_field :profile_pic %>
     </div>
+    <div>
     <br>
     <%= f.submit "Create Profile" %>
     <br>
     </div>
   </div>
-  <% end %>
+<% end %>
 
 
   

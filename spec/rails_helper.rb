@@ -9,7 +9,7 @@ require 'capybara/rspec'
 require 'simple_bdd'
 require 'shoulda/matchers'
 include ActionDispatch::TestProcess
-#Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :webkit
 
 ActiveRecord::Migration.maintain_test_schema!
 
