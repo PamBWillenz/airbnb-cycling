@@ -1,2 +1,8 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<section class="content">
+  <h1>Profile</h1>
+  
+  <p><%= image_tag @profile.profile_pic.url(:small) %></p>
+  <p><%= @profile.name %></p>
+  <p><%= @profile.bio %></p>
+  
+</section>

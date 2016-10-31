@@ -16,8 +16,8 @@ feature "profiles" do
     profile_pic_path = 'spec/fixtures/files/profile_pic.jpg'
     attach_file "profile[profile_pic]", profile_pic_path
     click_button "Create Profile"
-    expect(profile).to have_attributes(profile_pic_file_name: a_value)
     profile = Profile.last
+    expect(profile).to have_attributes(profile_pic_file_name: a_value)
     expect(page).to have_content("You successfully created your profile.")
   end
 end
