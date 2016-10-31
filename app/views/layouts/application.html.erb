@@ -10,7 +10,7 @@
   <% if member_signed_in? %>
     <%= link_to 'Sign out', destroy_member_session_path, method: :delete %>
     <% if has_profile? %>
-      <%= link_to "Profile", member_profile_path(@member, @profile) %>
+      <%= link_to "Profile", member_profile_path(current_member, current_member.profile) %>
     <% else %>
       <%= link_to "Create Profile", new_member_profile_path(current_member) %>
     <% end %>
