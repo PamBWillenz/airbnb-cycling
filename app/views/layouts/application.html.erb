@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <% if member_signed_in? %>
+    <%= link_to 'Sign out', destroy_member_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Sign in', new_member_session_path %>
+  <% end %>
+  
   <% unless notice.blank? %>
     <%= notice %>
   <% end %>
@@ -15,11 +20,7 @@
   <% unless alert.blank? %>
     <%= alert %>
   <% end %>    
-  <% if member_signed_in? %>
-    <%= link_to 'Sign out', destroy_member_session_path, method: :delete %>
-  <% else %>
-    <%= link_to 'Sign in', new_member_session_path %>
-  <% end %>
+  
   
   <%= yield %>
 
