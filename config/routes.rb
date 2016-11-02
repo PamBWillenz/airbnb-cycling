@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :profiles
   end
   
+  resources :profiles, only: :index
+
   root 'home#index'
   
 end

@@ -1,0 +1,8 @@
+<h1>Traveling Cyclist Profiles</h1>
+
+<% @profiles.each do |profile| %>
+  <%= image_tag(profile.profile.pic(:small)) %>
+  <p><%= profile.member.name %></p>
+  <%= link_to "View Profile", member_profile_path(profile.member, profile) %>
+
+<% end %>  

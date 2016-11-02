@@ -1,5 +1,6 @@
 <%= form_for [@member, @profile], html: { multipart: true} do |f| %>
-  
+    
+    <%= f.text_field :name, placeholder: "Enter name" %>
     <%= f.text_area :bio, placeholder: "Enter bio" %>
     <%= f.file_field :profile_pic %>
     <%= f.submit "Create Profile" %>

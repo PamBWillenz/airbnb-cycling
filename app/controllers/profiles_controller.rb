@@ -1,5 +1,9 @@
 class ProfilesController < ApplicationController
-  before_action :set_member
+  before_action :set_member, except: :index
+
+  def index
+    @profiles = Profile.all 
+  end
 
   def new
     @profile = @member.build_profile

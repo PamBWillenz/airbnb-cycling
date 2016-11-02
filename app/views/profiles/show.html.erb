@@ -1,7 +1,7 @@
-<section class="content">
-  <h1>Profile</h1>
+<section>
+  <h1><%= @profile.member.name %>'sProfile</h1>
   
-  <p><%= image_tag @profile.profile_pic.url(:small) %></p>
+  <p><%= image_tag (@profile.profile_pic(:small)) %></p>
   <p><%= @profile.name %></p>
   <p><%= @profile.bio %></p>
   
