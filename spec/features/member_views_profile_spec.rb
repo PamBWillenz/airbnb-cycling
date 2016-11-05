@@ -23,7 +23,8 @@ feature "member views profile" do
 
     expect(page).to have_content "#{profile.member.name}'s Profile"
     expect(page).to have_content profile.bio
-    expect(page).to have_content "profile[profile_pic]", profile.profile_pic 
+    expect(page).to have_css("img[src*='profile_pic']")
+    #expect(page).to have_content "profile[profile_pic]", profile.profile_pic 
 
   end
 
