@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "member views profile" do 
-  let(:profile) {FactoryGirl.create(:profile)}
+  let(:profile) {FactoryGirl.create(:profile_with_pic)}
 
   before do
     login_as(profile.member, :scope => :member)
@@ -24,7 +24,6 @@ feature "member views profile" do
     expect(page).to have_content "#{profile.member.name}'s Profile"
     expect(page).to have_content profile.bio
     expect(page).to have_css("img[src*='profile_pic']")
-    #expect(page).to have_content "profile[profile_pic]", profile.profile_pic 
 
   end
 
