@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'simple_bdd'
 require 'shoulda/matchers'
+require 'pundit/rspec'
 include ActionDispatch::TestProcess
 Capybara.javascript_driver = :webkit
 
