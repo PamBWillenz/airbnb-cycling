@@ -40,6 +40,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (7.1.4)
+    autoprefixer-rails (6.5.2)
+      execjs
     aws-sdk (2.6.14)
       aws-sdk-resources (= 2.6.14)
     aws-sdk-core (2.6.14)
@@ -51,6 +53,9 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
+    bootstrap (4.0.0.alpha5)
+      autoprefixer-rails (>= 6.0.3)
+      sass (>= 3.4.19)
     builder (3.2.2)
     byebug (9.0.6)
     capybara (2.7.1)
@@ -251,6 +256,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk (~> 2)
   better_errors
+  bootstrap (~> 4.0.0.alpha5)
   byebug (= 9.0.6)
   capybara-email
   capybara-webkit (= 1.11.1)
