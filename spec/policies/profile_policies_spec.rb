@@ -16,8 +16,8 @@ end
 
 
 context "for member viewing other members' profiles or creating a profile" do 
-  let(:profile) { FactoryGirl.create(:profile, :member => member) }
-  let(:member) { FactoryGirl.create(:member) }
+  let(:profile) { FactoryGirl.create(:profile) }
+  let(:member) { FactoryGirl.create(:member, email: "notallowedmember@yopmail.com") }
 
   permissions :index?, :show?, :new?, :create? do 
     it "grants access to member" do 
