@@ -1,8 +1,11 @@
-<h1>Traveling Cyclist Profiles</h1>
+<div class="booyah-box col-xs-10 col-xs-offset-1">
 
-<% @profiles.each do |profile| %>
-  <%= image_tag(profile.profile_pic(:small)) %>
-  <p><%= profile.member.name %></p>
-  <%= link_to "View Profile", member_profile_path(profile.member, profile) %>
+  <h1>Traveling Cyclist Profiles</h1>
 
-<% end %>  
+  <% @profiles.each do |profile| %>
+    <%= image_tag(profile.profile_pic(:small)) %>
+    <p><%= profile.member.name %></p>
+    <%= link_to "View Profile", member_profile_path(profile.member, profile) %>
+
+  <% end %> 
+</div> 
