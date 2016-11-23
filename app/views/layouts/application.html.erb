@@ -26,18 +26,28 @@
       <%= link_to 'AirBnB Cycling', root_path, class: 'navbar-brand' %>
     </span>
       
-        <ul class="navbar-text float-xs-right text-muted">
+        
             
           <% if member_signed_in? %>
+          <ul class="navbar-text float-xs-right text-muted">
             <%= link_to 'Sign out', destroy_member_session_path, method: :delete %>
-            <% if has_profile? %>&nbsp&nbsp
-              <%= link_to "Profile", member_profile_path(current_member, current_member.profile) %>&nbsp&nbsp
+          </ul>  
+            <% if has_profile? %>
+            <ul class="navbar-text float-xs-right text-muted">
+              <%= link_to "Profile", member_profile_path(current_member, current_member.profile) %>
+            </ul>  
             <% else %>
+            <ul class="navbar-text float-xs-right text-muted">
              <%= link_to "Create Profile", new_member_profile_path(current_member) %>
+            </ul> 
             <% end %>
           <% else %>
-            <%= link_to "Sign up", new_member_registration_path %>&nbsp&nbsp&nbsp
-            <%= link_to "Sign in", new_member_session_path %>&nbsp
+          <ul class="navbar-text float-xs-right text-muted">  
+            <%= link_to "Sign up", new_member_registration_path %>
+          </ul>
+          <ul class="navbar-text float-xs-right text-muted">  
+            <%= link_to "Sign in", new_member_session_path %>
+          </ul>  
           <% end %>  
         </ul>
       </nav>
