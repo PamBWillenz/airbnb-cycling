@@ -13,7 +13,9 @@ feature "sign up" do
   scenario "visiting the site to sign up" do
     visit root_path
     click_link "Sign in"
-    click_link "Sign up"
+    within(:css, "#sign-up") do
+      click_link "Sign up"
+    end
     fill_in_signup_fields
     expect(page).to have_content("You have signed up successfully.")
   end
