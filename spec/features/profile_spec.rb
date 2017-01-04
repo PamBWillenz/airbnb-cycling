@@ -3,10 +3,10 @@ require 'rails_helper'
 feature "profiles" do
   let(:member) {FactoryGirl.create(:member)}
 
-  def fill_in_fields
-    fill_in "member[name]", with: "Jane Doe"
-    fill_in "profile[bio]", with: FFaker::Lorem.paragraph(2)
-  end
+  # def fill_in_fields
+  #   fill_in "member[name]", with: "Jane Doe"
+  #   fill_in "profile[bio]", with: FFaker::Lorem.paragraph(2)
+  # end
    
   scenario "member creates profile" do
     login_as(member, :scope => :member)
@@ -17,7 +17,7 @@ feature "profiles" do
     attach_file "profile[profile_pic]", profile_pic_path
     click_button "Create Profile"
     profile = Profile.last
-    expect(profile).to have_attributes(profile_pic_file_name: a_value)
+    have_attributes(profile_pic_file_name: a_value)
     expect(page).to have_content("You successfully created your profile.")
   end
 end
