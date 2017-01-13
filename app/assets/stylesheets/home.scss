@@ -1,3 +1,79 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container-fluid {
+  padding: 0;
+}
+
+    /*Section HERO */
+.hero {
+  background: image-url("home_cycling.jpg") no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 600px;
+  // overflow: hidden;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .search-widget {
+    width: 700px;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.9);
+
+    @media (max-width: 767px) {
+      width: 300px;
+    }
+    
+    h3 {
+      margin: 10px 0 20px;
+      letter-spacing: 0.5px;
+      word-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .form-group {
+      @media (min-width: 768px) {
+        margin: 0 3px;
+
+        input.form-control {
+          width: 140px;
+          font-size: 12px;
+        }
+      }
+    }
+    
+    .btn {
+      text-transform: uppercase;
+
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* Section TREE POINTS */
+
+.three-cycling {
+  padding-top: 1.5rem;
+  background-color: #eee;
+  
+
+  .point {
+    min-height: 7rem;
+    padding: 0 3rem;
+
+    image {
+      padding: 1.4rem 1.7rem 1.4rem;
+      font-size: 2.4rem;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+  }
+}
+

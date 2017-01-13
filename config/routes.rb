@@ -8,5 +8,13 @@ Rails.application.routes.draw do
   resources :profiles, only: :index
 
   root 'home#index'
+
+  resources :locations do 
+    member do 
+      get :add_images
+      get :calendar
+      get :add_available_dates
+    end
+  end
   
 end

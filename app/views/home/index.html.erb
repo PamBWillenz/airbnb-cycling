@@ -1,10 +1,45 @@
-<div class="booyah-box col-xs-10 col-xs-offset-1">
-  <h1>Cycle There</h1>
-  </br>
-  </br>
-  <h3>Book homes, ride bikes and stay in places all over the world</h3>
-</div>
+<section class="hero">
+  <div class="jumbotron search-widget">
+    <h3>Book your perfect bike vacation</h3>
+    <%= form_tag locations_path, method: :get, class: "form-inline" do %>
+      <div class="form-group">
+        <%= text_field_tag(:address, nil, class: "form-control", placeholder: "where to? city, state, address") %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag(:start_date, nil, id: "datepicker-start", class: "form-control", placeholder: "check in") %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag(:end_date, nil, id: "datepicker-end", class: "form-control", placeholder: "check out") %>
+      </div>
+      <%= submit_tag "Find Properties", name: "commit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</section>
 
+<section class="three-cycling">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 point">
+        <div class="row">
+          <div class="col-xs-3"><%= image_tag 'cycling-icon.png' %></div>
+          <div class="col-xs-9"><p>Our homes include all kinds of bikes.</p></div>
+        </div>
+      </div>
+      <div class="col-sm-4 point">
+        <div class="row">
+          <div class="col-xs-3"><%= image_tag 'outdoor-icon.png' %></div>
+          <div class="col-xs-9"><p>Mountain, Road, Commuting - whatever you like.</p></div>
+        </div>  
+      </div>
+      <div class="col-sm-4 point">
+        <div class="row">
+          <div class="col-xs-3"><%= image_tag 'map-icon.png' %></div>
+          <div class="col-xs-9"><span>You'll love the neighborhoods and scenery.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</section>
 
 
 
