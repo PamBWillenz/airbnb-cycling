@@ -32,9 +32,12 @@
           <ul class="navbar-text float-xs-right text-muted">
             <%= link_to 'Sign out', destroy_member_session_path, method: :delete %>
           </ul>  
+          <ul class="navbar-text float-xs-right text-muted">
+            <%= link_to 'Member Profiles', profiles_path %>
+          </ul> 
             <% if has_profile? %>
             <ul class="navbar-text float-xs-right text-muted">
-              <%= link_to "Profile", member_profile_path(current_member, current_member.profile) %>
+              <%= link_to "Your Profile", member_profile_path(current_member, current_member.profile) %>
             </ul>  
             <% else %>
             <ul class="navbar-text float-xs-right text-muted">
@@ -49,6 +52,8 @@
             <%= link_to "Sign in", new_member_session_path %>
           </ul>  
           <% end %>  
+          <ul class="navbar-text float-xs-right text-muted">  
+            <%= link_to "Become a host", new_location_path, class: "btn btn-warning btn-property" %>
         </ul>
       </nav>
       </nav>  
