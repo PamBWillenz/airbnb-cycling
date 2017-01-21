@@ -1,14 +1,19 @@
 FactoryGirl.define do
+
+    sequence :title do |n|
+        "My title" + n.to_s
+    end
+    
   factory :location do
-    title "MyString"
-    description "MyText"
-    address_1 "MyString"
-    address_2 "MyString"
-    city "MyString"
-    state "MyString"
-    postcode "MyString"
-    bike_type "MyString"
+    title 
+    description FFaker::Lorem.paragraph(2)
+    address_1 "2 Ski Drive"
+    address_2 "My address"
+    city "Sun Valley"
+    state "Idaho"
+    postcode "My Postcode"
+    bike_type "Mountain"
     guests 1
-    member nil
+    association :member, factory: :member
   end
 end

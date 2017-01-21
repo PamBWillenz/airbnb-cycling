@@ -7,5 +7,5 @@ class Member < ApplicationRecord
        validates_presence_of :name
 
   has_one :profile
-  has_many :location
+  has_one :location
 end

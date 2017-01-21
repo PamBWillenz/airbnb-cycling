@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_member!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate_member!, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /locations
   # GET /locations.json
@@ -20,8 +20,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
-    @profile = current_member.profile
-    authorize @profile
+    authorize @location
   end
 
   # POST /locations
@@ -43,6 +42,7 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
+    authorize @location
     respond_to do |format|
       if @location.update(location_params)
         format.html { redirect_to @location, notice: 'Location was successfully updated.' }
