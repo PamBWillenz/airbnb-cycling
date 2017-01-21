@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027175947) do
+ActiveRecord::Schema.define(version: 20170121132421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postcode"
+    t.string   "bike_type"
+    t.integer  "guests"
+    t.integer  "member_id"
+    t.float    "latitude"
+    t.float    "longititude"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["member_id"], name: "index_locations_on_member_id", using: :btree
+  end
 
   create_table "members", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -46,5 +64,6 @@ ActiveRecord::Schema.define(version: 20161027175947) do
     t.index ["member_id"], name: "index_profiles_on_member_id", using: :btree
   end
 
+  add_foreign_key "locations", "members"
   add_foreign_key "profiles", "members"
 end
