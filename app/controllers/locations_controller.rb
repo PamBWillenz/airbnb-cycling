@@ -45,7 +45,7 @@ class LocationsController < ApplicationController
     authorize @location
     respond_to do |format|
       if @location.update(location_params)
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.html { redirect_to add_images_location_path(@location), notice: 'Location was successfully updated.' }
         format.json { render :show, status: :ok, location: @location }
       else
         format.html { render :edit }
@@ -72,6 +72,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:title, :description, :address_1, :address_2, :city, :state, :postcode, :bike_type, :guests, :member_id)
+      params.require(:location).permit(:title, :description, :address_1, :address_2, :city, :state, :postcode, :bike_type, :guests, :member_id, location_images_attributes: [:id, :picture, :picture_order, :_destroy, :location_id])
     end
 end

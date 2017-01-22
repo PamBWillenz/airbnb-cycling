@@ -1,3 +1,25 @@
+<div class="container location-page">
+  
+  <section>
+    <div class="row">
+      <div class="col-md-6">
+        <h1 class="text-uppercase"><%= @location.title %></h1>
+      </div>
+
+      <div class="col-md-6 pull-right">
+        <div class="pull-right">
+          <h5><%= @location.address_1 %></h5>
+          <h5><%= @location.address_2 if @location.address_2 %></h5>
+          <h5><%= @location.city if @location.city %></h5>
+          <h5><%= @location.state if  @location.state %></h5>
+          <h5><%= "#{@location.postcode}" if @location.postcode %></h5>
+          <h5><%= @location.bike_type if @location.bike_type %></h5>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
 <p id="notice"><%= notice %></p>
 
 <p>

@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170121132421) do
+ActiveRecord::Schema.define(version: 20170122191030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "location_images", force: :cascade do |t|
+    t.string   "caption"
+    t.integer  "picture_order"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.integer  "location_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["location_id"], name: "index_location_images_on_location_id", using: :btree
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string   "title"
@@ -64,6 +77,7 @@ ActiveRecord::Schema.define(version: 20170121132421) do
     t.index ["member_id"], name: "index_profiles_on_member_id", using: :btree
   end
 
+  add_foreign_key "location_images", "locations"
   add_foreign_key "locations", "members"
   add_foreign_key "profiles", "members"
 end

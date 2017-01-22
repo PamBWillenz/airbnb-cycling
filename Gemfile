@@ -29,6 +29,7 @@ gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2'
 gem 'pundit'
 gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'dropzonejs-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
