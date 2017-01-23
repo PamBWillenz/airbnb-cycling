@@ -4,7 +4,7 @@ feature "Member creates a location" do
   
   scenario "by entering a description and uploading images" do
     visit new_location_path
-    expect(page).to have_content("New Location")
+    expect(page).to have_content("Your New Location")
     fill_in "location[title]", with: "Location title"
     fill_in "location[description]", with: FFaker::Lorem.paragraph(2)
     fill_in "location[address_1]", with: "2 Ski Drive"

@@ -18,10 +18,10 @@ RSpec.describe Location, type: :model do
     it { should validate_presence_of(:bike_type) }
     it { should validate_presence_of(:guests) }
 
-    it do 
-      should accept_nested_attributes_for(:location_image)
-      .allow_destroy(true)
-    end
+    # it do 
+    #   should accept_nested_attributes_for(:location_image)
+    #   .allow_destroy(true)
+    # end
   end
 
   describe "associations" do 
