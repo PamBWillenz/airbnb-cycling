@@ -1,14 +1,18 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe "locations/new", type: :view do
-  before(:each) do
-    assign(:location, Location.new())
-  end
+# RSpec.describe "locations/new", type: :view do
+#   before(:each) do
+#     assign(:location, Location.new(
+#       :description => "MyText"
+#     ))
+#   end
 
-  it "renders new location form" do
-    render
+#   it "renders new location form" do
+#     render
 
-    assert_select "form[action=?][method=?]", locations_path, "post" do
-    end
-  end
-end
+#     assert_select "form[action=?][method=?]", locations_path, "post" do
+
+#       assert_select "textarea#location_description[name=?]", "location[description]"
+#     end
+#   end
+# end

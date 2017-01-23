@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
-Add Images
+
+<h1>Add Pictures</h1>
 <%= form_for @location, html: { multipart: true, class: "dropzone" }  do |f| %>
   <%= f.fields_for :location_images, LocationImage.new do |image| %>
     <div class="fallback">     
@@ -19,11 +19,6 @@ Add Images
     paramName: "location[location_images_attributes][0][picture]", // Rails expects the file upload to be something like model[field_name]
     addRemoveLinks: false // Don't show remove links on dropzone itself.
   }); 
-
-  dropzone.on("success", function(file) {
-    this.removeFile(file)
-    $.getScript("/images")
-  })
 });
 </script>
 

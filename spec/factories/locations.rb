@@ -6,7 +6,7 @@ FactoryGirl.define do
     
   factory :location do
     title 
-    description FFaker::Lorem.paragraph(2)
+    description "MyText"
     address_1 "2 Ski Drive"
     address_2 "My address"
     city "Sun Valley"

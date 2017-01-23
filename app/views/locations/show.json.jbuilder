@@ -1,1 +1,2 @@
-json.partial! "locations/location", location: @location
+json.extract! @location, :id, :description, :created_at, :updated_at
+

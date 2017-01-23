@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :set_location, only: [:show, :edit, :update, :destroy, :add_images]
   before_action :authenticate_member!, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /locations
@@ -30,7 +30,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.html { redirect_to add_images_location_path(@location), notice: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @location }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class LocationsController < ApplicationController
     authorize @location
     respond_to do |format|
       if @location.update(location_params)
-        format.html { redirect_to add_images_location_path(@location), notice: 'Location was successfully updated.' }
+        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
         format.json { render :show, status: :ok, location: @location }
       else
         format.html { render :edit }
@@ -57,11 +57,15 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy
+    authorize @location
     @location.destroy
     respond_to do |format|
       format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def add_images
   end
 
   private
@@ -72,6 +76,8 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:title, :description, :address_1, :address_2, :city, :state, :postcode, :bike_type, :guests, :member_id, location_images_attributes: [:id, :picture, :picture_order, :_destroy, :location_id])
+      params.require(:location).permit(:title, :description, :address_1, :address_2, :city, 
+        :state, :postcode, :bike_type, :guests, :member_id, 
+        location_images_attributes: [:id, :picture, :picture_order, :_destroy, :location_id])
     end
 end
