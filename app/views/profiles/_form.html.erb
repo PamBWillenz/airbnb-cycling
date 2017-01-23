@@ -1,11 +1,20 @@
 <div class="center">  
   <div class="booyah-box col-xs-10 col-xs-offset-1">
     <%= form_for [@member, @profile], html: { multipart: true} do |f| %>
-        
-        <%= f.text_field :name, placeholder: "Enter name" %>
-        <%= f.text_area :bio, placeholder: "Enter bio" %>
+      <div class="form-group">  
+        <%= f.label :name, "Enter name", class: "col-form-label" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :bio, "Enter bio", class: "col-form-label" %>
+        <%= f.text_area :bio, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
         <%= f.file_field :profile_pic %>
-        <%= f.submit "Create Profile" %>
+        <%= f.submit "Create Profile", class: "btn btn-primary" %>
+      </div>
         
     <% end %>
   </div>  
