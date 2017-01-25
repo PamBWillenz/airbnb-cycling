@@ -31,7 +31,8 @@
         <td><%= location.postcode %></td>
         <td><%= location.bike_type %></td>
         <td><%= location.guests %></td>
-        <td><%= location.member %></td>
+        <td><%= location.member.name %></td>
+        
 
         <td><%= link_to 'Show', location %></td>
         <td><%= link_to 'Edit', edit_location_path(location) %></td>
