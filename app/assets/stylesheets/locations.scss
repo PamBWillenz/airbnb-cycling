@@ -1,3 +1,58 @@
 // Place all the styles related to the Locations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dropzone {
+  border: 2px dashed #0087F7;
+  border-radius: 5px;
+  background: white;
+  margin: 10px;
+
+  & .dz-message {
+    font-weight: 500;
+  }
+}
+
+#text-center {
+  padding: 8px;
+}
+
+.items-form {
+  max-width: 800px;
+  margin: 3rem auto 10rem;
+}
+
+
+.location-link {
+  padding-left: 5px;
+  color: #000;
+
+  &:hover {
+    text-decoration: none;
+    color: #A6BFCD;
+  }
+}
+
+.locations-wrapper {
+  padding: 8rem 0.8rem 5rem;
+}
+
+.location-page {
+  section {
+    margin: 4rem 0;
+  
+    &#profile {
+      background-color: #f3f3f3;
+      padding: 4rem;
+
+      img {
+        height: 10rem;
+      }
+    }
+  }
+}
+
+.location-picture {
+  width: 50%;
+}
+

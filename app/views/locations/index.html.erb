@@ -1,47 +1,72 @@
-<p id="notice"><%= notice %></p>
+<div class="container locations-wrapper">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Find Your Place</h3>
+        </div>
+        <ul class="list-group">
+        <%= form_tag locations_path, method: :get do %>
+          <li class="list-group-item">
+            <h5>Destination</h5>
+            <div class="form-group">
+              <%= text_field_tag(:address, nil, class: "form-control", placeholder: "where to? city, state, address") %>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <h5>Travel Dates</h5>
+            <div class="form-group"> 
+              <%= text_field_tag(:start_date, nil, id: "datepicker-start", class: "form-control", placeholder: "check in") %>
+            </div>
+            <div class="form-group">
+              <%= text_field_tag(:end_date, nil, id: "datepicker-end", class: "form-control", placeholder: "check out") %>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <h5>Bike Types</h5>
+            <div class="form-group">
+              <%= select_tag "bike_type", "<option>Road</option><option>Mountain</option><option>Gravel</option>".html_safe, prompt: "Select Bike Type" %>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <h5>Guests</h5>
+            <div class="form-group">
+              <%= select_tag "guests", "<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>".html_safe, prompt: "Select Guests" %>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <%= submit_tag "Find Locations", name: "commit", class: "btn btn-primary" %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <% @locations.each do |location| %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-5">
+                <% unless location.location_images.empty? %>
+                  <%= link_to( image_tag(location.location_images[0].picture.url(:small), class: "location-picture", alt: "location picture"), location ) %>
+                <% end %>
+              </div>
+              <div class="col-md-7">
+                <h2><%= link_to( location.title, location, class: "location-link" ) %></h2>
+                <h5><em><%= location.address_1 %>, <%= location.city %></em></h5>
+                <p class="text-wrapper"><%= location.description %></p>
+                <h5 class="text-wrapper">Bike Type: <%= location.bike_type %></h5>
+                <h6 class="text-uppercase"><%= location.guests %> guests</h6>
+                <h5 class="text-capitalize location-link text-wrapper"><i class="map-icon.png"></i><%= link_to("View this location", location, class: "location-link" ) %> <h5>
+                <h5 class="text-capitalize location-link text-wrapper"><i class="map-icon.png"></i><%= link_to 'Show', location %> <h5>
+                <h5 class="text-capitalize location-link text-wrapper"><i class="map-icon.png"></i><%= link_to 'Edit location', edit_location_path(location) %><h5>
+                <h5 class="text-capitalize location-link text-wrapper"><i class="map-icon.png"></i><%= link_to 'Delete location', location, method: :delete, data: { confirm: 'Are you sure?' } %><h5>  
+                <h5 class="text-capitalize location-link text-wrapper"><i class="map-icon.png"></i><%= link_to 'New Location', new_location_path %><h5>  
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
 
-<h1>Locations</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Address 1</th>
-      <th>Address 2</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Postcode</th>
-      <th>Bike type</th>
-      <th>Guests</th>
-      <th>Member</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @locations.each do |location| %>
-      <tr>
-        <td><%= location.title %></td>
-        <td><%= location.description %></td>
-        <td><%= location.address_1 %></td>
-        <td><%= location.address_2 %></td>
-        <td><%= location.city %></td>
-        <td><%= location.state %></td>
-        <td><%= location.postcode %></td>
-        <td><%= location.bike_type %></td>
-        <td><%= location.guests %></td>
-        <td><%= location.member.name %></td>
-        
-
-        <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Location', new_location_path %>
