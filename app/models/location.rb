@@ -1,5 +1,5 @@
 class Location < ApplicationRecord
-  belongs_to :member
+  belongs_to :member, dependent: :destroy
 
   has_many :location_images, dependent: :destroy
   accepts_nested_attributes_for :location_images, allow_destroy: true
@@ -14,8 +14,4 @@ class Location < ApplicationRecord
                         :bike_type,
                         :guests,
                         :member_id
-
-  # def main_image
-  #   LocationImages.where(location_id: id).where(picture_order: 1)
-  # end
 end
