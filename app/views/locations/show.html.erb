@@ -1,18 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @location.description %>
-</p>
-
-
-<% @location_images.each do |image| %>
-  <%= image_tag image.picture.url %>
-<% end %>
-
-
-
-<!-- <div class="container location-page">
+<div class="container location-page">
   
   <section>
     <div class="row">
@@ -34,57 +20,28 @@
     </div>
   </section>
 
-<p id="notice"><%= notice %></p>
+<section>
+  <div class="pictures">
+    <% @location_images.each do |image| %>
+      <%= image_tag image.picture.url(:large), class: "location-picture", alt: "location picture" %>
+    <% end %>
+  </div>
+</section>
 
-<p>
-  <strong>Title:</strong>
-  <%= @location.title %>
-</p>
+<section>
+  <h3>Description:</h3>
+  <p><%= @location.description %></p>
+</section>
 
-<p>
-  <strong>Description:</strong>
-  <%= @location.description %>
-</p>
+<section>
+  <h3>Number of Guests:</h3>
+  <p><%= @location.guests %></p>
+</section>
 
-<p>
-  <strong>Address 1:</strong>
-  <%= @location.address_1 %>
-</p>
-
-<p>
-  <strong>Address 2:</strong>
-  <%= @location.address_2 %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @location.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @location.state %>
-</p>
-
-<p>
-  <strong>Postcode:</strong>
-  <%= @location.postcode %>
-</p>
-
-<p>
-  <strong>Bike type:</strong>
-  <%= @location.bike_type %>
-</p>
-
-<p>
-  <strong>Guests:</strong>
-  <%= @location.guests %>
-</p>
-
-<p>
-  <strong>Member:</strong>
-  <%= @location.member %>
-</p> -->
+<section>
+  <h3>Bike Type:</h3>
+  <p><%= @location.bike_type %></p>
+</section>
 
 
 <%= link_to 'Edit', edit_location_path(@location) %> |

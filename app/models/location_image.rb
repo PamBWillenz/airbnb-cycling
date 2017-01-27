@@ -1,7 +1,11 @@
 class LocationImage < ApplicationRecord
   belongs_to :location
 
-  has_attached_file :picture
+  has_attached_file :picture, styles: {
+    small: "150x150#", 
+    medium: "200x200>", 
+    large: "300x300>"
+  }, default_url: "/images/:style/missing.png"
 
     validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 

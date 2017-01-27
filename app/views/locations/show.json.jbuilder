@@ -1,2 +1,2 @@
-json.extract! @location, :id, :description, :created_at, :updated_at
+json.extract! @location, :id, :title, :description, :created_at, :updated_at
 
