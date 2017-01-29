@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "signing in" do
+  feature "signing in" do
       let(:member) {FactoryGirl.create(:member)}
       
       feature "Member creates a location" do 
@@ -35,14 +35,14 @@ feature "signing in" do
         expect(LocationImage.first.picture_order).to eq 1
       end
 
+  feature "Guest can't create a location" do 
+    let(:member) { FactoryGirl.create(:member) }   
+
       scenario "opens the location form when a member is not signed in" do 
         visit new_location_path
         expect(page).to have_content("You need to sign in or sign up before continuing.")
       end
-      scenario "goes to location form when member is not logged in" do 
-        visit new_location_path
-        expect(page).to have_content("You need to sign in or sign up before continuing.")
-      end
     end
+  end
 end
 

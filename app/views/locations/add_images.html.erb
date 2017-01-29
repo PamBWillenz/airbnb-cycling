@@ -1,26 +1,30 @@
+<div class="container">
+  <div class="dropzone-section">
+    <h1>Add Pictures</h1>
+    <%= form_for @location, html: { multipart: true, class: "dropzone" }  do |f| %>
+      <%= f.fields_for :location_images, LocationImage.new do |image| %>
+      <div class="dz-caption" data-dz-caption><span>Drop files here or click to upload.</span></div>
+        <div class="fallback">     
+          <%= image.file_field :picture %>
+          <%= f.submit "UPDATE & SAVE" %>     
+        </div>    
+      <% end %>
+    <% end %>
 
-<h1>Add Pictures</h1>
-<%= form_for @location, html: { multipart: true, class: "dropzone" }  do |f| %>
-  <%= f.fields_for :location_images, LocationImage.new do |image| %>
-    <div class="fallback">     
-      <%= image.file_field :picture %>
-      <%= f.submit "UPDATE & SAVE" %>     
-    </div>    
-  <% end %>
-<% end %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+      // disable auto discover
+      Dropzone.autoDiscover = false;
+     
+      var dropzone = new Dropzone (".dropzone", {
+        maxFilesize: 256, // Set the maximum file size to 256 MB
+        paramName: "location[location_images_attributes][0][picture]", // Rails expects the file upload to be something like model[field_name]
+        addRemoveLinks: false // Don't show remove links on dropzone itself.
+      }); 
+    });
+    </script>
 
-<script type="text/javascript">
-  $(document).ready(function(){
-  // disable auto discover
-  Dropzone.autoDiscover = false;
- 
-  var dropzone = new Dropzone (".dropzone", {
-    maxFilesize: 256, // Set the maximum file size to 256 MB
-    paramName: "location[location_images_attributes][0][picture]", // Rails expects the file upload to be something like model[field_name]
-    addRemoveLinks: false // Don't show remove links on dropzone itself.
-  }); 
-});
-</script>
-
-<%= link_to 'Locations', locations_path %>
+    <%= link_to 'Locations', locations_path %>
+  </div>
+</div>
 

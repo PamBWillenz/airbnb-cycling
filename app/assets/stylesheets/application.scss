@@ -76,3 +76,22 @@ img {
   display: block;
 }
 
+.panel-primary {
+  border-color: #B7B1AE;
+  
+  & >.panel-heading {
+    background-color: #B7B1AE;
+    border-color: #B7B1AE;
+  }
+}
+
+.panel-title {
+  margin-bottom: 3rem;
+  text-align: center;   
+}
+
+.text-wrapper {
+  margin-top: 2rem;
+}
+
+

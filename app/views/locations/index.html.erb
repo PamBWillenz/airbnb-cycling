@@ -3,7 +3,7 @@
     <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Find Your Place</h3>
+          <h3 class="panel-title">Search More</h3>
         </div>
         <ul class="list-group">
         <%= form_tag locations_path, method: :get do %>
@@ -39,6 +39,7 @@
           </li>
         <% end %>
         </ul>
+        
       </div>
     </div>
     <div class="col-md-9">
@@ -53,23 +54,17 @@
               </div>
               <div class="col-md-7">
                 <h2><%= link_to( location.title, location, class: "location-link" ) %></h2>
-                <br />
                 <h5><em><%= location.address_1 %>, <%= location.city %></em></h5>
-                <br />
                 <p class="text-wrapper"><%= location.description %></p>
-                <br />
                 <h5 class="text-wrapper">Bike Type: <%= location.bike_type %></h5>
-                <br />
                 <h6 class="text-uppercase"><%= location.guests %> guests</h6>
-
-            
-              <div class="col-md-6">    
                 <h5 class="text-capitalize location-link text-wrapper"><i class="map-icon.png"></i><%= link_to("View this location", location, class: "location-link" ) %> <h5>
+
                 <h5 class="text-capitalize location-link text-wrapper"><i class="map-icon.png"></i><%= link_to 'Show', location %> <h5>
                 <h5 class="text-capitalize location-link text-wrapper"><i class="map-icon.png"></i><%= link_to 'Edit location', edit_location_path(location) %><h5>
                 <h5 class="text-capitalize location-link text-wrapper"><i class="map-icon.png"></i><%= link_to 'Delete location', location, method: :delete, data: { confirm: 'Are you sure?' } %><h5>  
                 <h5 class="text-capitalize location-link text-wrapper"><i class="map-icon.png"></i><%= link_to 'New Location', new_location_path %><h5> 
-              </div>
+              
             
               </div>
             </div>
