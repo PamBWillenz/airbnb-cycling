@@ -24,7 +24,12 @@ require "rails_helper"
         expect(page).to have_content("Location was successfully created.")
         expect(page).to have_content "Add Pictures"
         expect(Location.count).to eq 1
-       
+
+        location = Location.last 
+        expect(location).to_not have_attributes(
+          longitude: nil, latitude: nil,
+          description: nil, address_1: nil
+        )
 
         picture_1_path = 'spec/fixtures/files/picture_1.jpg'
 

@@ -31,6 +31,8 @@ gem 'pundit'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'dropzonejs-rails'
 
+gem 'geocoder'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end

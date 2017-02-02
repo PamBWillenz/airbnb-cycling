@@ -67,6 +67,7 @@ class LocationsController < ApplicationController
   end
 
   def add_images
+    @location_images = @location.location_images.all
   end
 
   private
