@@ -32,6 +32,9 @@ gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'dropzonejs-rails'
 
 gem 'geocoder'
+gem 'underscore-rails'
+gem 'gmaps4rails'
+gem 'markerclustererplus-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

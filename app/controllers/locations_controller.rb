@@ -12,6 +12,7 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
   def show
     @location_images = @location.location_images.all
+    @coordinates = {lng: @location.longitude, lat: @location.latitude, radius: 800}
   end
 
   # GET /locations/new

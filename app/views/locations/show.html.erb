@@ -28,6 +28,11 @@
   </div>
 </section>
 
+<h1><%= @location.title %></h1>
+<div id="map-container">
+  <div id="map-canvas"></div>
+</div>
+
 <section>
   <h3>Description:</h3>
   <p><%= @location.description %></p>
@@ -46,3 +51,13 @@
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map-canvas'}}, function(){
+    markers = handler.addCircle(<%=raw @coordinates.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds(markers);
+    handler.getMap().setZoom(15);
+  });
+</script>
