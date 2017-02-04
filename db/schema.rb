@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202004206) do
+ActiveRecord::Schema.define(version: 20170204224155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +77,20 @@ ActiveRecord::Schema.define(version: 20170202004206) do
     t.index ["member_id"], name: "index_profiles_on_member_id", using: :btree
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "location_id"
+    t.integer  "member_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["location_id"], name: "index_reservations_on_location_id", using: :btree
+    t.index ["member_id"], name: "index_reservations_on_member_id", using: :btree
+  end
+
   add_foreign_key "location_images", "locations"
   add_foreign_key "locations", "members"
   add_foreign_key "profiles", "members"
+  add_foreign_key "reservations", "locations"
+  add_foreign_key "reservations", "members"
 end
