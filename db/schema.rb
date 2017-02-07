@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170204224155) do
+ActiveRecord::Schema.define(version: 20170207231220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "available_dates", force: :cascade do |t|
+    t.date     "available_date"
+    t.integer  "location_id"
+    t.boolean  "booked",         default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["location_id"], name: "index_available_dates_on_location_id", using: :btree
+  end
 
   create_table "location_images", force: :cascade do |t|
     t.string   "caption"
@@ -88,6 +97,7 @@ ActiveRecord::Schema.define(version: 20170204224155) do
     t.index ["member_id"], name: "index_reservations_on_member_id", using: :btree
   end
 
+  add_foreign_key "available_dates", "locations"
   add_foreign_key "location_images", "locations"
   add_foreign_key "locations", "members"
   add_foreign_key "profiles", "members"

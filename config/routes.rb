@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   
   resources :profiles, only: :index
+  get 'reservations/new'
 
   root 'home#index'
 
