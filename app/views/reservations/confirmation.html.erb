@@ -1,0 +1,19 @@
+<div> Thank you for booking with us!</>
+
+</div>
+
+<div>
+  <p>Your reservation is set for:</p>
+  <p><%= @reservation.start_date.strftime("%d %B %Y") %></p>
+  <p>until</p>
+  <p><%= @reservation.start_date.strftime("%d %B %Y") %></p>
+  <p>at</p>
+  <p><%= @location.title %></p>
+  <p><%= @location.address_1 %></p>
+  <p><%= @location.city %></p>
+  <p><%= @location.state %></p>
+</div>
+
+<div>
+  Have a wonderful stay!
+</div>

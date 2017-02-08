@@ -1,18 +1,30 @@
 require 'rails_helper'
 
 feature "Member reserves a location" do 
-  let(:location) {FactoryGirl.create(:location)}
+  let(:location) { FactoryGirl.create(:location) }
+  let(:member) { FactoryGirl.create(:member) }
+
+  before do 
+    login_as(member, scope: :member)
+  end
 
   scenario "by visiting location show page and selecting dates" do
-    visit location_path(location)
-    expect(page).to have_content location.title
+    visit "locations#{location.id}"
+    expect(page).to have_content location.description
 
-    fill_in "reservation[start_date]", with: Date.tomorrow
-    fill_in "reservation[end_date]", with: Date.today + 2.days
+    execute_script("
+      $('#datepicker-end').datepicker(
+        'setDate', new Date((new Date()).valueOf() + 1000*3600*24));
+      ")
+
+    # fill_in "reservation[start_date]", with: Date.tomorrow
+    # fill_in "reservation[end_date]", with: Date.today + 2.days
 
     click_button "Reserve Location"
+    click_button "Confirm Reservation"
 
     expect(page).to have_content "Reservation successfully created."
+    expect(page).to have_content "Thanks for booking with us!"
 
     expect(Reservation.count).to eq 1
     reservation = Reservation.last

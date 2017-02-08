@@ -1,5 +1,13 @@
-<h1>Reservations#new</h1>
+<div>
+  Reservation Summary:
+</div>
 
-
-<%= f.text_field :start_date, value: Date.tomorrow %>
-<%= f.text_field :end_date, value: Date.today %>
+<div>
+    <%= form_for @reservation do |f| %>
+      <%= f.text_field :start_date, id: "datepicker-start", value: @reservation.start_date.strftime() %>
+      <%= f.text_field :end_date, id: "datepicker-end", value: @reservation.end_date.strftime() %>
+      <%= f.hidden_field :location_id, value: @location.id %>
+      <%= f.hidden_field :member_id, value: current_member.id %>
+      <%= f.submit "Confirm Reservation" %>
+  <% end %>  
+</div>

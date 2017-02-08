@@ -6,6 +6,14 @@
         <h1 class="text-uppercase"><%= @location.title %></h1>
       </div>
 
+<%= form_for Reservation.new, url: new_reservation_path, html: { method: :get } do |f| %>
+  <%= f.text_field :start_date, id: "datepicker-start" %>
+  <%= f.text_field :end_date, id: "datepicker-end" %>
+  <%= f.hidden_field :location_id, value: @location.id %>
+  <%= f.hidden_field :member_id, value: current_member.id %>
+  <%= f.submit "Make a Reservation" %>
+<% end %>  
+
       <div class="col-md-6 pull-right">
         <div class="pull-right">
           <h5><%= @location.address_1 %></h5>
@@ -47,7 +55,6 @@
   <h3>Bike Type:</h3>
   <p><%= @location.bike_type %></p>
 </section>
-
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>

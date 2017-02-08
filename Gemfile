@@ -36,6 +36,8 @@ gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'markerclustererplus-rails'
 
+gem 'jquery-ui-rails'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end

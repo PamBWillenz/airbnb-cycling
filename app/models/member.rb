@@ -8,4 +8,5 @@ class Member < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_one :location, dependent: :destroy
+  has_many :reservations
 end

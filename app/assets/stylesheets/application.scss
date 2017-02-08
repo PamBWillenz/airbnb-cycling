@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require dropzone/dropzone
+ *= require jquery-ui/datepicker
+ *= require jquery-ui/sortable
  *= require_tree .
  *= require_self
  */
