@@ -18,6 +18,8 @@
 //= require dropzone
 //= require jquery-ui/widgets/datepicker
 //= require jquery-ui/widgets/sortable
+//= require moment
+//= require fullcalendar
 //= require underscore
 //= require gmaps/google
 //= require markerclusterer

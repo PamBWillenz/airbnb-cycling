@@ -13,6 +13,7 @@
  *= require dropzone/dropzone
  *= require jquery-ui/datepicker
  *= require jquery-ui/sortable
+ *= require fullcalendar
  *= require_tree .
  *= require_self
  */
@@ -96,4 +97,9 @@ img {
   margin-top: 2rem;
 }
 
+/*Full calendar*/
+
+.fc-past {
+  background-color: gray;
+}
 

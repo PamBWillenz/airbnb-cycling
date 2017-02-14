@@ -23,4 +23,9 @@ class Location < ApplicationRecord
   def address_changed?
     address_1_changed? || city_changed? || state_changed? 
   end
+
+  def future_available_dates
+    future_dates = AvailableDate.where("date >= ?", Date.today)
+    future_dates.where(booked: false)
+  end
 end

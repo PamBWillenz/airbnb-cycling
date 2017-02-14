@@ -37,6 +37,8 @@ gem 'gmaps4rails'
 gem 'markerclustererplus-rails'
 
 gem 'jquery-ui-rails'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

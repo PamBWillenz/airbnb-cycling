@@ -3,3 +3,10 @@
   <%= text_field_tag :end_date %>
   <%= submit_tag "Add available dates" %>
 <% end %>  
+
+<div id="calendar", style='width; 600px;'></div>
+<script type="text/javascript">
+  $('#calendar').fullCalendar({
+    events: '/locations/<%=@location.id%>/calendar.json'
+  });
+</script>
