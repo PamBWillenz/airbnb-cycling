@@ -11,5 +11,11 @@ class Reservation < ApplicationRecord
       errors[:base] << "Some of the dates of your reservation are not available. Please try different dates."
     end
   end
+
+  def dates_booked
+    (self.start_date..self.end_date).each do |date|
+      AvailableDate.where(date: date).update(booked: true)
+    end
+  end
 end
 

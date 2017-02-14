@@ -13,12 +13,18 @@ feature "Member reserves a location" do
     expect(page).to have_content location.description
 
     execute_script("
+      $('#datepicker-start').datepicker(
+        'setDate', new Date((new Date()).valueOf() + 1000*3600*24));
+      ")
+
+    fill_in "reservation[start_date]", with: Date.tomorrow
+
+    execute_script("
       $('#datepicker-end').datepicker(
         'setDate', new Date((new Date()).valueOf() + 1000*3600*24));
       ")
 
-    # fill_in "reservation[start_date]", with: Date.tomorrow
-    # fill_in "reservation[end_date]", with: Date.today + 2.days
+    fill_in "reservation[end_date]", with: Date.today + 2.days
 
     click_button "Reserve Location"
     click_button "Confirm Reservation"
