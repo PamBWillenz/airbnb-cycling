@@ -13,55 +13,75 @@
         </div>
       <% end %>
 
-      <div class="field">
-        <%= f.label :title %>
-        <%= f.text_field :title %>
+      <div class="form-group">
+        <%= f.label :title, class: "control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.label :description %>
-        <%= f.text_area :description %>
+      <div class="form-group">
+        <%= f.label :description, class: "control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_area :description, class: "form-control", placeholder: "Description of your location" %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.label :address_1 %>
-        <%= f.text_area :address_1 %>
+      <div class="form-group">
+        <%= f.label :address_1, class: "control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_area :address_1, class: "form-control", placeholder: "Address 1" %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.label :address_2 %>
-        <%= f.text_area :address_2 %>
+      <div class="form-group">
+        <%= f.label :address_2, class: "control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_area :address_2, class: "form-control", placeholder: "Address 2" %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.label :city %>
-        <%= f.text_field :city %>
+      <div class="form-group">
+        <%= f.label :city, class: "control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :city, class: "form-control", placeholder: "City" %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.label :state %>
-        <%= f.text_field :state %>
+      <div class="form-group">
+        <%= f.label :state, class: "control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :state, class: "form-control", placeholder: "State" %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.label :postcode %>
-        <%= f.text_field :postcode %>
+      <div class="form-group">
+        <%= f.label :postcode, class: "control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :postcode, class: "form-control", placeholder: "Postcode" %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.label :bike_type %>
-        <%= f.text_field :bike_type %>
+      <div class="form-group">
+        <%= f.label :bike_type, "Bike Type", class: "control-label"%>
+        <div class="col-sm-10">
+          <%= f.text_field :bike_type, class: "form-control", placeholder: "Bike Type" %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.label :guests %>
-        <%= f.number_field :guests %>
+      <div class="form-group">
+        <%= f.label :guests, class: "control-label" %>
+        <div class="col-sm-10">
+          <%= f.number_field :guests, class: "form-control", placeholder: "Number of Guests" %>
+        </div>
       </div>
 
       <%= f.hidden_field :member_id, value: current_member.id %>
 
-      <div class="actions">
-        <%= f.submit "Create Location", class: "btn btn-primary" %>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.submit "Create Location", class: "btn btn-primary" %>
+        </div>
       </div>
     <% end %>
   </div>

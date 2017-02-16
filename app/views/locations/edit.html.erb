@@ -1,7 +1,9 @@
-<h1>Editing Location</h1>
+<div class="container">  
+  <h1>Update Location</h1>
 
-<%= render 'form', location: @location %>
+  <%= render 'form', location: @location %>
 
-<%= link_to 'Images', add_images_location_path(@location) %>
-<%= link_to 'Show', @location %> |
-<%= link_to 'Back', locations_path %>
+  <%= link_to 'Images', add_images_location_path(@location) %>
+  <%= link_to 'Show', @location %> |
+  <%= link_to 'Back', locations_path %>
+</div>
