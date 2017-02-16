@@ -41,6 +41,19 @@
   }
 }
 
+.calendar-wrapper {
+  margin: 10rem auto;
+  max-width: 550px;
+
+  @media (max-width: 480px) {
+    max-width: 320px;
+  }
+}
+
+.dates-wrapper {
+  margin: 0 auto;
+}
+
 .locations-wrapper {
   padding: 8rem 0.8rem 5rem;
 }

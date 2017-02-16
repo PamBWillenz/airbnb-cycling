@@ -5,7 +5,8 @@ json.array!(@location.reservations) do |date|
 end
 
 json.array!(@location.future_available_dates) do |date|
-  json.start date.date
+  json.id date.id
+  json.start date.available_date
   json.rendering "background"
   json.backgroundColor "blue"
 end

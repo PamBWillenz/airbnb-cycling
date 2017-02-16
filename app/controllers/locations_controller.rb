@@ -71,6 +71,14 @@ class LocationsController < ApplicationController
     @location_images = @location.location_images.all
   end
 
+  def remove_images
+    @location_images.destroy
+    respond_to do |format|
+      format.html { redirect_to locations_url, notice: 'Location image was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   def calendar
     authorize @location
   end
