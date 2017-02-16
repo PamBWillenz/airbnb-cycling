@@ -4,7 +4,7 @@ json.array!(@location.reservations) do |date|
   json.end date.end_date + 11 hours
 end
 
-json.array!(@locaiton.future_available_dates) do |date|
+json.array!(@location.future_available_dates) do |date|
   json.start date.date
   json.rendering "background"
   json.backgroundColor "blue"

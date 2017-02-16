@@ -7,16 +7,16 @@
       </div>
 
 <%= form_for Reservation.new, url: new_reservation_path, html: { method: :get, class: "form-inline" } do |f| %>
-  <%= f.hidden_field :location_id, value: @location.id %>
-  <%= f.hidden_field :member_id, value: current_member.id %>
-<div class="form-group">
-  <%= f.text_field :start_date, id: "datepicker-start", class: "form-control", placeholder: "check-in" %>
-</div>
-<div>
-  <%= f.text_field :end_date, id: "datepicker-end", class: "form-control", placeholder: "check-out" %>
-</div>
-  
-  <%= f.submit "Make a Reservation", class: "btn btn-warning pull-right" %>
+    <%= f.hidden_field :location_id, value: @location.id %>
+    <%= f.hidden_field :member_id, value: current_member.id %>
+  <div class="form-group">
+    <%= f.text_field :start_date, id: "datepicker-start", class: "form-control", placeholder: "check-in" %>
+  </div>
+  <div>
+    <%= f.text_field :end_date, id: "datepicker-end", class: "form-control", placeholder: "check-out" %>
+  </div>
+    
+    <%= f.submit "Make a Reservation", class: "btn btn-warning pull-right" %>
 <% end %>  
 
       <div class="col-md-6 pull-right">

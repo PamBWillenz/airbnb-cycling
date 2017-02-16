@@ -7,7 +7,7 @@ describe LocationPolicy do
     let(:member) { nil }
     let(:location) { FactoryGirl.create(:location) }
 
-    permissions :new?, :edit?, :create?, :update?, :destroy?, :add_images? do 
+    permissions :new?, :edit?, :create?, :update?, :destroy?, :add_images?, :add_available_dates?, :calendar? do 
       it "does not grant access for creating, editing, updating and destroying locations" do 
         expect(subject).not_to permit(member, location)
       end
@@ -24,7 +24,7 @@ describe LocationPolicy do
       end
     end
 
-    permissions :edit?, :update?, :destroy?, :add_images? do 
+    permissions :edit?, :update?, :destroy?, :add_images?, :add_available_dates?, :calendar? do 
       it "denies access to member for whom the location does not belong" do 
         expect(subject).not_to permit(member, location)
       end
@@ -34,7 +34,7 @@ describe LocationPolicy do
   context "for member editing own location" do 
     let(:location) { FactoryGirl.create(:location) }
 
-    permissions :edit?, :update?, :destroy? do 
+    permissions :edit?, :update?, :destroy?, :add_available_dates?, :add_images?, :calendar? do 
       it "grants access if location belongs to member" do 
         expect(subject).to permit(location.member, location)
       end

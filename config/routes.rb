@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :members
-
+  
   get 'reservations/new'
+
+  devise_for :members
 
   resources :members do
     resources :profiles

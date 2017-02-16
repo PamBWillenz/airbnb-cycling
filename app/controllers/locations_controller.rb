@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:show, :edit, :update, :destroy, :add_images]
-  before_action :authenticate_member!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_location, only: [:show, :edit, :update, :destroy, :add_images, :calendar, :add_available_dates]
+  before_action :authenticate_member!, only: [:new, :edit, :create, :update, :destroy, :add_images, :calendar, :add_available_dates]
 
   # GET /locations
   # GET /locations.json
@@ -69,6 +69,15 @@ class LocationsController < ApplicationController
 
   def add_images
     @location_images = @location.location_images.all
+  end
+
+  def calendar
+    authorize @location
+  end
+
+  def add_available_dates
+    @location.create_available_dates(params[:start_date], params[:end_date])
+    redirect_to calendar_location_path(@location), notice: "Successfully added available dates"
   end
 
   private
