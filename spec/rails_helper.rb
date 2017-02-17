@@ -15,6 +15,8 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   
+  config.include Devise::Test::ControllerHelpers, type: :controller
+
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.include SimpleBdd, type: :feature

@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'reservations/new'
-
   devise_for :members
 
   resources :members do

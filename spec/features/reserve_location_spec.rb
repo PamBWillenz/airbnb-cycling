@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 feature "Member reserves a location" do 
-  let(:location) { FactoryGirl.create(:location) }
-  let(:member) { FactoryGirl.create(:member) }
+  let(:location) { FactoryGirl.create(:location_with_available_date) }
+  let(:member) { FactoryGirl.create(:member, email: "kitty@bikes.com") }
 
   before do 
     login_as(member, scope: :member)
   end
 
-  scenario "by visiting location show page and selecting dates" do
-    visit "locations#{location.id}"
+  scenario "by visiting location show page and selecting dates", js: true do
+    visit location_path(location)
     expect(page).to have_content location.description
 
     execute_script("
@@ -17,16 +17,13 @@ feature "Member reserves a location" do
         'setDate', new Date((new Date()).valueOf() + 1000*3600*24));
       ")
 
-    fill_in "reservation[start_date]", with: Date.tomorrow
-
     execute_script("
       $('#datepicker-end').datepicker(
         'setDate', new Date((new Date()).valueOf() + 1000*3600*24));
       ")
 
-    fill_in "reservation[end_date]", with: Date.today + 2.days
-
-    click_button "Reserve Location"
+    click_button "Make a Reservation"
+    expect(page).to have_content "Reservation summary:"
     click_button "Confirm Reservation"
 
     expect(page).to have_content "Reservation successfully created."
