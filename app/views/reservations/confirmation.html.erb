@@ -10,6 +10,9 @@
   <p>at</p>
   <p><%= @location.title %></p>
   <p><%= @location.address_1 %></p>
+  <% if @location.address_2.present? %>
+    <p><%= @location.address_2 %></p>
+  <% end %>  
   <p><%= @location.city %></p>
   <p><%= @location.state %></p>
 </div>

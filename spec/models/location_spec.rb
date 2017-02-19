@@ -25,5 +25,21 @@ RSpec.describe Location, type: :model do
   describe "associations" do 
     it { should belong_to(:member) }
     it { should have_many(:location_images).dependent(:destroy) }
+    it { should have_many(:available_dates) }
   end
+
+  describe "#create_available_dates" do 
+    it "creates available dates for a date range for that location" do 
+      location = FactoryGirl.create(:location)
+      start_date = (Date.tomorrow).to_s
+      end_date = (Date.today + 2.days).to_s
+
+      location.create_available_dates(start_date, end_date)
+
+      expect(AvailableDate.count).to eq 2
+      available_date = AvailableDate.last
+      expect(available_date.location_id).to eq location.id 
+      expect(available_date.date).to eq Date.today + 2.days
+      expect(available_date.reserved).to eq false
+    end
 end

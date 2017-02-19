@@ -4,8 +4,8 @@
 
 <div>
     <%= form_for @reservation do |f| %>
-      <%= f.text_field :start_date, id: "datepicker-start", value: @reservation.start_date.strftime() %>
-      <%= f.text_field :end_date, id: "datepicker-end", value: @reservation.end_date.strftime() %>
+      <%= f.text_field :start_date, id: "datepicker-start", value: @reservation.start_date.strftime("%m %B %Y") %>
+      <%= f.text_field :end_date, id: "datepicker-end", value: @reservation.end_date.strftime("%m %B %Y") %>
       <%= f.hidden_field :location_id, value: @reservation.location.id %>
       <%= f.hidden_field :member_id, value: current_member.id %>
       <%= f.submit "Confirm Reservation", class: "btn btn-warning" %>
