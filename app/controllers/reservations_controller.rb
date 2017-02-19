@@ -12,16 +12,16 @@ class ReservationsController < ApplicationController
         format.html { redirect_to location_path(@location), alert: "Please select dates for Check in and Check out." }
       else
         @location = @reservation.location
-        @available_dates = @location.available_dates.where(booked: false).pluck(:date).as_json
+        @available_dates = @location.available_dates.where(booked: false).pluck(:available_date).as_json
         format.html { render :new }
       end
     end
   end
 
   def create
-    respond to do |format|
+    respond_to do |format|
       if @reservation.save
-        @reservation.dates_booked
+        @reservation.available_dates_booked
         format.html { redirect_to confirmation_reservation_path(@reservation), notice: "Reservation successfully created." }
       else
         format.html { redirect_to location_path(@location), alert: "Some of your dates on your reservation are not available. Please try different dates." }

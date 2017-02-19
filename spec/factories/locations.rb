@@ -16,9 +16,11 @@ FactoryGirl.define do
         guests 1
         association :member, factory: :member
 
-        factory :location_with_available_dates do 
-            after(:create) {|instance| create(:available_date, location: instance) }
-            after(:create) {|instance| create(:available_date, location: instance, date: Date.today + 2 days) }
-        end
+      factory :location_with_available_dates do
+          after(:create) {|instance| create(:available_date, location: instance) }
+          after(:create) {|instance| create(:available_date, location: instance, date_available: Date.today + 2.days) }
+          after(:create) {|instance| create(:available_date, location: instance, date_available: Date.today + 3.days) }
+          after(:create) {|instance| create(:available_date, location: instance, date_available: Date.today + 4.days) }
     end
+  end
 end

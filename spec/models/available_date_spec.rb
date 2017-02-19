@@ -7,7 +7,7 @@ RSpec.describe AvailableDate, type: :model do
       expect(FactoryGirl.create(:available_date, location: location)).to be_valid
     end
 
-    it { should validate_presence_of(:date_available)}
+    it { should validate_presence_of(:date)}
   end
 
   describe "assocations" do 

@@ -40,6 +40,7 @@ RSpec.describe Location, type: :model do
       available_date = AvailableDate.last
       expect(available_date.location_id).to eq location.id 
       expect(available_date.date).to eq Date.today + 2.days
-      expect(available_date.reserved).to eq false
+      expect(available_date.booked).to eq false
     end
+  end
 end
