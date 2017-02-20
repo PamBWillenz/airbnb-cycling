@@ -10,7 +10,7 @@ feature "Member reserves a location" do
 
   scenario "by visiting location show page and selecting dates", js: true do
     visit location_path(location)
-    expect(page).to have_content title.upcase
+    expect(page).to have_content location.description
 
     execute_script("
       $('#datepicker-start').datepicker(
@@ -32,6 +32,7 @@ feature "Member reserves a location" do
     expect(Reservation.count).to eq 1
     reservation = Reservation.last
     expect(reservation.location_id).to eq location.id 
+    expect(reservation.member_id).to eq member.id
     expect(reservation.start_date).to eq Date.tomorrow
     expect(reservation.end_date).to eq Date.today + 2.days
 
