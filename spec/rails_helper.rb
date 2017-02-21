@@ -29,6 +29,14 @@ RSpec.configure do |config|
 
   Capybara.javascript_driver = :webkit
 
+  Capybara::Webkit.configure do |config|
+    config.allow_url("https://maps.googleapis.com/maps-api-v3/api/js/28/2/common.js")
+    config.allow_url("maps.googleapis.com")
+    config.allow_url("https://maps.googleapis.com/maps-api-v3/api/js/28/2/util.js")
+    config.allow_url("https://maps.googleapis.com/maps-api-v3/api/js/28/2/stats.js")
+    config.allow_url("csi.gstatic.com")
+  end
+
   config.before(:each) do
     DatabaseCleaner.start
   end

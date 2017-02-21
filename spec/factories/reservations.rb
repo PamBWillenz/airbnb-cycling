@@ -4,5 +4,6 @@ FactoryGirl.define do
     end_date "2017-02-06"
     location
     member
+    association :member, email: "kitty@goeswild.com"
   end
 end

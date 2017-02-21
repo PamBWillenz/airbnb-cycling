@@ -13,14 +13,15 @@ feature "Member reserves a location" do
     expect(page).to have_content location.description
 
     execute_script("
-      $('#datepicker-start').datepicker(
-        'setDate', new Date((new Date()).valueOf() + 1000*3600*24));
-      ")
-
+      $('#datepicker-start').pickadate('picker').set(
+        'select', new Date((new Date)()).valueOf() + 1000*3600*24),
+        { format: 'yyyy-mm-dd' });"
+      )
     execute_script("
-      $('#datepicker-end').datepicker(
-        'setDate', new Date((new Date()).valueOf() + 1000*3600*48));
-      ")
+      $('#datepicker-start').pickadate('picker').set(
+        'select', new Date((new Date)()).valueOf() + 1000*3600*48),
+        { format: 'yyyy-mm-dd' });"
+      )
 
     click_button "Make a Reservation"
     expect(page).to have_content "Reservation summary:"
