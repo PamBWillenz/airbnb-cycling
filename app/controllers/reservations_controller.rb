@@ -21,7 +21,7 @@ class ReservationsController < ApplicationController
   def create
     respond_to do |format|
       if @reservation.save
-        @reservation.available_dates_booked
+        @reservation.dates_booked
         format.html { redirect_to confirmation_reservation_path(@reservation), notice: "Reservation successfully created." }
       else
         format.html { redirect_to location_path(@location), alert: "Some of your dates on your reservation are not available. Please try different dates." }

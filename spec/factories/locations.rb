@@ -18,9 +18,9 @@ FactoryGirl.define do
 
       factory :location_with_available_dates do
           after(:create) {|instance| create(:available_date, location: instance) }
-          after(:create) {|instance| create(:available_date, location: instance, date_available: Date.today + 2.days) }
-          after(:create) {|instance| create(:available_date, location: instance, date_available: Date.today + 3.days) }
-          after(:create) {|instance| create(:available_date, location: instance, date_available: Date.today + 4.days) }
+          after(:create) {|instance| create(:available_date, location: instance, available_date: Date.today + 2.days) }
+          after(:create) {|instance| create(:available_date, location: instance, available_date: Date.today + 3.days) }
+          after(:create) {|instance| create(:available_date, location: instance, available_date: Date.today + 4.days) }
     end
   end
 end

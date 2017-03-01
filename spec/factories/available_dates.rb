@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :available_date do
-    date_available Date.tomorrow
+    available_date Date.tomorrow
     location
     booked false
   end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "Member reserves a location" do 
-  let(:location) { FactoryGirl.create(:location) }
+  let(:location) { FactoryGirl.create(:location_with_available_dates) }
   let(:member) { FactoryGirl.create(:member, email: "kitty@bikes.com") }
 
   before do 
@@ -14,17 +14,17 @@ feature "Member reserves a location" do
 
     execute_script("
       $('#datepicker-start').pickadate('picker').set(
-        'select', new Date((new Date)()).valueOf() + 1000*3600*24),
+        'select', new Date((new Date()).valueOf() + 1000*3600*24),
         { format: 'yyyy-mm-dd' });"
       )
     execute_script("
-      $('#datepicker-start').pickadate('picker').set(
-        'select', new Date((new Date)()).valueOf() + 1000*3600*48),
+      $('#datepicker-end').pickadate('picker').set(
+        'select', new Date((new Date()).valueOf() + 1000*3600*48),
         { format: 'yyyy-mm-dd' });"
       )
 
     click_button "Make a Reservation"
-    expect(page).to have_content "Reservation summary:"
+    expect(page).to have_content "Reservation Summary:"
     click_button "Confirm Reservation"
 
     expect(page).to have_content "Reservation successfully created."
@@ -37,7 +37,7 @@ feature "Member reserves a location" do
     expect(reservation.start_date).to eq Date.tomorrow
     expect(reservation.end_date).to eq Date.today + 2.days
 
-    let(:location) { FactoryGirl.create(:location_with_available_dates) }
+    # let(:location) { FactoryGirl.create(:location_with_available_dates) }
 
       first_available_date = AvailableDate.first 
       second_available_date = AvailableDate.second 
