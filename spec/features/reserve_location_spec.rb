@@ -34,10 +34,9 @@ feature "Member reserves a location" do
     reservation = Reservation.last
     expect(reservation.location_id).to eq location.id 
     expect(reservation.member_id).to eq member.id
-    expect(reservation.start_date).to eq Date.tomorrow
+    binding.pry
+    expect(reservation.start_date).to eq Date.current + 1.day
     expect(reservation.end_date).to eq Date.today + 2.days
-
-    # let(:location) { FactoryGirl.create(:location_with_available_dates) }
 
       first_available_date = AvailableDate.first 
       second_available_date = AvailableDate.second 

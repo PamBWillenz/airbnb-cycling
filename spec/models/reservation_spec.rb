@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Reservation, type: :model do
   describe "validations" do 
-    it "has a valid factory" do 
+    it "has a valid factory" do
       expect(FactoryGirl.create(:reservation)).to be_valid
     end
   end
