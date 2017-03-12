@@ -34,7 +34,6 @@ feature "Member reserves a location" do
     reservation = Reservation.last
     expect(reservation.location_id).to eq location.id 
     expect(reservation.member_id).to eq member.id
-    binding.pry
     expect(reservation.start_date).to eq Date.current + 1.day
     expect(reservation.end_date).to eq Date.today + 2.days
 
