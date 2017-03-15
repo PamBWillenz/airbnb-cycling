@@ -1,19 +1,22 @@
-<div class="container">
-  <div class="dates-wrapper">
-    <h2 class="main-title">Available Dates</h2>
+<div id="reservation-form">  
+  <div class="container">
+    <div class="dates-wrapper">
+      <h2 class="main-title">Available Dates</h2>
 
-      <%= form_tag({controller: "locations", action: "add_available_dates"}, method: "get", class: "form-inline") do %>
-      <div class="form-group">
-        <%= text_field_tag :start_date, nil, id: 'datepicker-start', class: "form-control", placeholder: "Start Date" %>
+        <%= form_tag({controller: "locations", action: "add_available_dates"}, method: "get", class: "form-inline") do %>
+        <div class="form-group">
+          <%= text_field_tag :start_date, nil, id: 'datepicker-start', class: "form-control", placeholder: "Start Date" %>
+        </div>
+        <div class="form-group">
+          <%= text_field_tag :end_date, nil, id: 'datepicker-end', class: "form-control", placeholder: "End Date" %>
+        </div>
+          </br><br/>
+          <%= submit_tag "Add available dates" %>
+        <% end %>  
       </div>
-      <div class="form-group">
-        <%= text_field_tag :end_date, nil, id: 'datepicker-end', class: "form-control", placeholder: "End Date" %>
-      </div>
-        <%= submit_tag "Add available dates" %>
-      <% end %>  
-    </div>
 
-  <div id="calendar" class="calendar-wrapper"></div>
+    <div id="calendar" class="calendar-wrapper"></div>
+  </div>
 </div>
 
 <script type="text/javascript">
