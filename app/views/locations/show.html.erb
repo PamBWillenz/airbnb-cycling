@@ -74,3 +74,20 @@
     handler.getMap().setZoom(15);
   });
 </script>
+<br/><br/>
+<div id="calendar", style='width: 600px;'></div>
+<script type="text/javascript">
+ $('#calendar').fullCalendar({
+ events: '<%=@location.id%>.json',
+ eventBackgroundColor: "#bdc3c7" #a light grey
+ });
+</script>
+
+<div id="calendar", style='width: 600px;'></div>
+<script type="text/javascript">
+ $('#calendar').fullCalendar({
+ events: '<%=@location.id%>.json',
+ eventBackgroundColor: "green"
+ });
+</script>
+
