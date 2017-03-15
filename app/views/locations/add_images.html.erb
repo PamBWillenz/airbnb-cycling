@@ -11,6 +11,16 @@
       <% end %>
     <% end %>
 
+<section>
+  <div class="pictures">
+    <% @location_images.each do |image| %>
+      <%= image_tag image.picture.url(:small), class: "location-picture", alt: "location picture" %>
+      <%= link_to 'Delete Image', remove_images_location_path(@location, image_id: image.id), data: { confirm: 'Are you sure?' } %> 
+    <% end %>
+  </div>
+</section>
+
+
     <div class="links-wrapper">
       <h5 class="text-uppercase">Next</h5>
       <%= link_to "Add Available Dates", calendar_location_path(@location), class: "btn btn-primary" %>
@@ -35,7 +45,6 @@
 
     
     <%= link_to 'Locations', locations_path %>
-    <%= link_to 'Delete Image', remove_images_location_path(@location), method: :delete, data: { confirm: 'Are you sure?' } %>  
 
   </div>
 </div>

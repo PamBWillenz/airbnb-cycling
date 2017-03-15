@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:show, :edit, :update, :destroy, :add_images, :calendar, :add_available_dates]
+  before_action :set_location, only: [:show, :edit, :update, :destroy, :add_images, :remove_images, :calendar, :add_available_dates]
   before_action :authenticate_member!, only: [:new, :edit, :create, :update, :destroy, :add_images, :calendar, :add_available_dates]
 
   # GET /locations
@@ -72,9 +72,10 @@ class LocationsController < ApplicationController
   end
 
   def remove_images
-    @location_images.destroy
+    @location_image = LocationImage.find(params[:image_id])
+      @location_image.destroy
     respond_to do |format|
-      format.html { redirect_to locations_url, notice: 'Location image was successfully destroyed.' }
+      format.html { redirect_to add_images_location_path(@location), notice: 'Location image was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

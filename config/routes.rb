@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get :add_images
       get :calendar
       get :add_available_dates
-      delete :remove_images
+      get :remove_images
     end
   end
 
