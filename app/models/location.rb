@@ -33,7 +33,7 @@ class Location < ApplicationRecord
   end
 
   def future_available_dates
-    future_dates = AvailableDate.where("date >= ?", Date.today)
+    future_dates = AvailableDate.where("available_date >= ?", Date.today)
     future_dates.where(booked: false)
   end
 end
