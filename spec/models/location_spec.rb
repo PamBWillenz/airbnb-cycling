@@ -42,5 +42,17 @@ RSpec.describe Location, type: :model do
       expect(available_date.available_date).to eq Date.today + 2.days
       expect(available_date.booked).to eq false
     end
+
+    describe "#future_available_dates" do 
+      it "gathers all the future available dates" do 
+        location = FactoryGirl.create(:location_with_available_dates)
+
+        results = location.future_available_dates
+        last_location = Location.last
+
+        expect(results.count).to eq 4
+        expect(results).to include(last_location)
+      end
+    end
   end
 end
