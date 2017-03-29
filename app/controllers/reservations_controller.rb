@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:new, :create]
 
   def index
-    @reservations = Reservation.upcoming_for_member(member: current_member.id)
+    @reservations = Reservation.where(member: current_member.id)
   end
 
   def new

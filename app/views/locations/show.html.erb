@@ -42,6 +42,11 @@
   </div>
 </section>
 
+<div id="calendar", style='width: 600px;'></div>
+<div style='width:800px;'>
+  
+<br/><br/>
+
 <h1><%= @location.title %></h1>
 <div id="map-container">
   <div id="map-canvas"></div>
@@ -62,8 +67,10 @@
   <p><%= @location.bike_type %></p>
 </section>
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<%= link_to 'Edit Location', edit_location_path(@location) %> |
+<%= link_to 'View Location', locations_path %>
+
+
 
 <script type="text/javascript">
   handler = Gmaps.build('Google');
@@ -73,21 +80,17 @@
     handler.fitMapToBounds(markers);
     handler.getMap().setZoom(15);
   });
+
+  $('#calendar').fullCalendar({
+ events: '<%=@location.id%>.json',
+ eventBackgroundColor: "green"
+ });
 </script>
-<br/><br/>
-<div id="calendar", style='width: 600px;'></div>
+
+
 <script type="text/javascript">
  $('#calendar').fullCalendar({
  events: '<%=@location.id%>.json',
  eventBackgroundColor: "#bdc3c7" #a light grey
  });
 </script>
-
-<div id="calendar", style='width: 600px;'></div>
-<script type="text/javascript">
- $('#calendar').fullCalendar({
- events: '<%=@location.id%>.json',
- eventBackgroundColor: "green"
- });
-</script>
-

@@ -48,10 +48,10 @@ RSpec.describe Location, type: :model do
         location = FactoryGirl.create(:location_with_available_dates)
 
         results = location.future_available_dates
-        last_location = Location.last
+        last_available_date = AvailableDate.last
 
         expect(results.count).to eq 4
-        expect(results).to include(last_location)
+        expect(results).to include(last_available_date)
       end
     end
   end
