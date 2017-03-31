@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:new, :create]
 
   def index
-    @reservations = Reservation.where(member: current_member.id)
+    @reservations = Reservation.where(member_id: current_member.id)
   end
 
   def new
@@ -19,6 +19,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
+    @reservation = Reservation.new(reservation_params)
     respond_to do |format|
       if @reservation.save
         @reservation.dates_booked
