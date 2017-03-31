@@ -24,6 +24,7 @@ feature "Host adds available dates to a location" do
       )
     click_button "Add available dates"
     expect(page).to have_content "Successfully added available dates"
+    expect(page).to have_css("td.fc-bgevent", count: 2)
   end
 end
 

@@ -82,6 +82,7 @@ class LocationsController < ApplicationController
 
   def calendar
     authorize @location
+    @reservations = Reservation.upcoming.where(location: @location)
   end
 
   def add_available_dates

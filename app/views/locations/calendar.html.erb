@@ -1,8 +1,8 @@
 <div id="reservation-form">  
   <div class="container">
     <div class="dates-wrapper">
-      <h2 class="main-title">Available Dates</h2>
-
+      <h2 class="main-title">Add Available Dates</h2>
+      <br />
         <%= form_tag({controller: "locations", action: "add_available_dates"}, method: "get", class: "form-inline") do %>
         <div class="form-group">
           <%= text_field_tag :start_date, nil, id: 'datepicker-start', class: "form-control", placeholder: "Start Date" %>
@@ -22,7 +22,6 @@
 <script type="text/javascript">
   $('#calendar').fullCalendar({
     events: '/locations/<%= @location.id %>/calendar.json',
-    // eventsBackgroundColor: "green"
   });
 </script>
 
