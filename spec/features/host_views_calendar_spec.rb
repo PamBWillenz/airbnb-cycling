@@ -22,7 +22,7 @@ feature "Host views calendar" do
   scenario "and sees available dates and a reservation", js: true do
     visit calendar_location_path(location)
     expect(page).to have_css("td.fc-bgevent", count: 3)
-    # expect(page).to have_content calendar.reservation.id
-    expect(page).to have_css("td.fc-event-container", count: 2)
+    expect(page).to have_content @upcoming_reservation.id
+    expect(page).to have_css("td.fc-event-container", count: 1)
   end
 end

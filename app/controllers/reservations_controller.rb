@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:new, :create]
 
   def index
-    @reservations = Reservation.where(member_id: current_member.id)
+    @reservations = Reservation.where(member_id: current_member.id).where("start_date >=?", Date.today)
   end
 
   def new

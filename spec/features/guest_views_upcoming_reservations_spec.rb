@@ -24,8 +24,8 @@ feature "Guest views upcoming reservations", js: true do
   scenario "by visiting index of upcoming reservations"  do
     visit reservations_path
     expect(page).to have_content @upcoming_reservation.start_date.strftime("%m/%d/%Y")
-    # expect(page).to_not have_content @past_reservation.start_date.strftime("%m/%d/%Y")
-    expect(page).to have_css("td.fc-event-container", count: 3)
+    expect(page).to_not have_content @past_reservation.start_date.strftime("%m/%d/%Y")
+    expect(page).to have_css("td.fc-event-container", count: 1)
   end
 
 end
