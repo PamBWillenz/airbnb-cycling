@@ -31,6 +31,7 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
 
     respond_to do |format|
+
       if @location.save
         format.html { redirect_to add_images_location_path(@location), notice: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @location }

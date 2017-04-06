@@ -18,7 +18,7 @@ require "rails_helper"
         fill_in "location[postcode]", with: "90765"
         fill_in "location[bike_type]", with: "Mountain"
         fill_in "location[guests]", with: 1
-
+        
         click_button "Create Location"
 
         expect(page).to have_content("Location was successfully created.")
