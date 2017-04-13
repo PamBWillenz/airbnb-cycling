@@ -14,7 +14,6 @@
 <nav class="navbar navbar-inverse" role="navigation">
   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> -->
         <span class="sr-only">Toggle navigation</span>
@@ -28,48 +27,74 @@
       <%= link_to 'AirBnB Cycling', root_path, class: 'navbar-brand' %>
     </span>
       
-        
-            
-          <% if member_signed_in? %>
-          <ul class="navbar-text float-xs-right text-muted">
-            <%= link_to 'Sign out', destroy_member_session_path, method: :delete %>
-          </ul>  
-          <ul class="navbar-text float-xs-right text-muted">
-            <%= link_to 'Member Profiles', profiles_path %>
-          </ul> 
-            <% if has_profile? %>
-            <ul class="navbar-text float-xs-right text-muted">
-              <%= link_to "Your Profile", member_profile_path(current_member, current_member.profile) %>
-            </ul>  
-            <% else %>
-            <ul class="navbar-text float-xs-right text-muted">
-             <%= link_to "Create Profile", new_member_profile_path(current_member) %>
-            </ul> 
-            <% end %>
-          <% else %>
-          <ul class="navbar-text float-xs-right text-muted">  
-            <%= link_to "Sign up", new_member_registration_path %>
-          </ul>
-          <ul class="navbar-text float-xs-right text-muted">  
-            <%= link_to "Sign in", new_member_session_path %>
-          </ul>  
-          <% end %>  
-          <ul class="navbar-text float-xs-right text-muted">  
-            <%= link_to "Become a host", new_location_path, class: "btn btn-warning btn-property" %>
+      <% if member_signed_in? %>
+        <ul class="navbar-text float-xs-right text-muted">
+          <%= link_to 'Sign out', destroy_member_session_path, method: :delete %>
+        </ul>  
+        <ul class="navbar-text float-xs-right text-muted">
+          <%= link_to 'Member Profiles', profiles_path %>
+        </ul> 
+          
+      <% if has_profile? %>
+        <ul class="navbar-text float-xs-right text-muted">
+          <%= link_to "Your Profile", member_profile_path(current_member, current_member.profile) %>
+        </ul>  
+      <% else %>
+        <ul class="navbar-text float-xs-right text-muted">
+         <%= link_to "Create Profile", new_member_profile_path(current_member) %>
+        </ul> 
+      <% end %>
+
+      <% if current_member.locations.any? %>
+        <ul class="navbar-text float-xs-right text-muted">
+          <%= link_to "Host Locations", host_locations_path %>
+        </ul> 
+      <% else %>
+        <ul class="navbar-text float-xs-right text-muted">  
+          <%= link_to "Become a host", new_location_path, class: "btn btn-warning btn-property" %>
         </ul>
+      <% end %>
+
+      <ul class="navbar-text float-xs-right text-muted">  
+        <%= link_to "Reservations", reservations_path %>
+      </ul>
+
+      <% else %>
+        <ul class="navbar-text float-xs-right text-muted">  
+          <%= link_to "Sign up", new_member_registration_path %>
+        </ul>
+        <ul class="navbar-text float-xs-right text-muted">  
+          <%= link_to "Sign in", new_member_session_path %>
+        </ul>  
+        <ul class="navbar-text float-xs-right text-muted">  
+          <%= link_to "Become a host", new_location_path, class: "btn btn-warning btn-property" %>
+        </ul>
+      <% end %> 
+
+          
       </nav>
       </nav>  
       <!-- </div> -->
   </div>
 </nav>
   
-<div>    
+<div class="container-fluid">    
   <% unless notice.blank? %>
-    <%= notice %>
+    <div class="alert alert-success alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= notice %>
+    </div>
   <% end %>
   
   <% unless alert.blank? %>
-    <%= alert %>
+    <div class"alert alert-danger alert-dismissable fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= alert %>
+    </div>
   <% end %>    
 </div>  
   <%= yield %>

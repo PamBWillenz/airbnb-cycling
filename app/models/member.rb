@@ -7,6 +7,6 @@ class Member < ApplicationRecord
        validates_presence_of :name
 
   has_one :profile, dependent: :destroy
-  has_one :location, dependent: :destroy
+  has_many :locations, dependent: :destroy
   has_many :reservations
 end

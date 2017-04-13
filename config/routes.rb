@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   resources :members do
     resources :profiles
   end
-  
+
   resources :profiles, only: :index
 
   root 'home#index'
+
+  get 'host_locations', to: 'locations#host_locations'
 
   resources :locations do 
     member do 

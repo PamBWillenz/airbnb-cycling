@@ -91,6 +91,10 @@ class LocationsController < ApplicationController
     redirect_to calendar_location_path(@location), notice: "Successfully added available dates"
   end
 
+  def host_locations
+    @locations = current_member.locations.includes(:location_images)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location
