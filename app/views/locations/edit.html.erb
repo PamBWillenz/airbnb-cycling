@@ -1,9 +1,14 @@
 <div class="container">  
+  <br /><br />
+  <%= link_to 'Back', locations_path, class: "btn btn-primary text-white" %> |
+  <%= link_to 'Images', add_images_location_path(@location), class: "btn btn-primary text-white" %> |
+  <%= link_to 'Show', @location, class: "btn btn-primary text-white" %> 
+  <br /><br />
   <h1>Update Location</h1>
+  <br /><br />
 
   <%= render 'form', location: @location %>
 
-  <%= link_to 'Images', add_images_location_path(@location) %>
-  <%= link_to 'Show', @location %> |
-  <%= link_to 'Back', locations_path %>
+  
+  
 </div>
