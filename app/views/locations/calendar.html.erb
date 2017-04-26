@@ -16,6 +16,9 @@
       </div>
 
     <div id="calendar" class="calendar-wrapper"></div>
+
+    <%=link_to("View this location", @location, class: "btn btn-primary") %>
+
   </div>
 </div>
 
@@ -24,4 +27,3 @@
     events: '/locations/<%= @location.id %>/calendar.json',
   });
 </script>
-

@@ -1,4 +1,6 @@
       <div class="col-md-12 center">
+        <br />
+        <h5 class="card-link"><%= link_to 'New Location', new_location_path, class: "btn btn-primary text-white" %></h5><br />
         <% @locations.each do |location| %>
           <div class="card">
             <div class="card-block">
@@ -13,15 +15,17 @@
                   <h5><em><%= location.address_1 %>, <%= location.city %></em></h5>
                   <h5 class="text-wrapper"><%= location.description %><h5>
                   <h5 class="text-wrapper">Bike Type: <%= location.bike_type %></h5>
-                  <h5 class="text-uppercase"><%= location.guests %> guests</h6>
-                  <h5 class="card-link text-muted"><%= link_to("View this location", location, class: "location-link" ) %> <h5>
-                  <h5 class="card-link text-muted"><%= link_to('Edit location', edit_location_path(location), class: "location-link") %><h5>
-                  <h5 class="card-link"><%= link_to 'Delete location', location, method: :delete, data: { confirm: 'Are you sure?' } %><h5>  
+                  <h5 class="text-uppercase"><%= location.guests %> guests</h5>
+                  
+                  <h5 class="card-link text-muted"><%= link_to("View this location", location, class: "location-link" ) %> </h5>
+                  <h5 class="card-link text-muted"><%= link_to('Edit location', edit_location_path(location), class: "location-link") %></h5>
+                  
+                  <h5 class="card-link text-muted"><%= link_to 'Delete location', location, class: "location-link", method: :delete, data: { confirm: 'Are you sure?' } %></h5>  
                     <br /><br />
-                  <h5 class="card-link"><%= link_to 'New Location', new_location_path, class: "btn btn-primary text-white" %><h5> 
-              
+                </div>
               </div>
             </div>
           </div>
+        <% end %>  
       </div>
-        <% end %>
+        
