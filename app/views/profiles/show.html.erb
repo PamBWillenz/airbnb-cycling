@@ -2,10 +2,14 @@
   <div class="booyah-box col-xs-10 col-xs-offset-1">
 
     <h1><%= @profile.member.name %>'s Profile</h1>
-    
+      
+      <h5 class="card-link float-xs-right text-muted"><%= link_to 'Home', root_path, 
+      class: "btn btn-primary text-white" %></h5>
+      
     <p><%= image_tag (@profile.profile_pic(:small)) %></p>
     <p><%= @profile.name %></p>
     <p><%= @profile.bio %></p>
+    
     
   </div>
 </div>
