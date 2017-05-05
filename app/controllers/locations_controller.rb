@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:show, :edit, :update, :destroy, :add_images, :remove_images, :calendar, :add_available_dates, :host_locations]
-  before_action :authenticate_member!, only: [:new, :edit, :create, :update, :destroy, :add_images, :calendar, :add_available_dates, :host_locations]
+  before_action :set_location, only: [:show, :edit, :update, :destroy, :add_images, :remove_images, :calendar, :add_available_dates]
+  before_action :authenticate_member!, only: [:new, :edit, :create, :update, :destroy, :add_images, :calendar, :add_available_dates]
 
   # GET /locations
   # GET /locations.json
