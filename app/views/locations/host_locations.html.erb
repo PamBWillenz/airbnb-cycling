@@ -1,6 +1,6 @@
       <div class="col-md-12 center">
         <br />
-        <h5 class="card-link"><%= link_to 'New Location', new_location_path, class: "btn btn-primary text-white" %></h5><br />
+        <h5 class="card-link center"><%= link_to 'New Location', new_location_path, class: "btn btn-primary text-white" %></h5><br />
 
         <% @locations.each do |location| %>
           <div class="card">
@@ -26,9 +26,10 @@
                   <h5 class="card-link text-muted"><%= link_to 'Delete location', location, class: "location-link", method: :delete, data: { confirm: 'Are you sure?' } %></h5>  
                     <br /><br />
                 </div>
+                <h5 class="card-link"><%= link_to 'Calendar', calendar_location_path(location), class: "btn btn-primary text-white" %></h5> 
               </div>
             </div>
           </div>
-          <h5 class="card-link"><%= link_to 'Calendar', calendar_location_path(location), class: "btn btn-primary text-white" %></h5> 
+          
         <% end %>  
       </div>       

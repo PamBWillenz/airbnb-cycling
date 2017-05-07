@@ -1,1 +1,5 @@
-Geocoder::Configuration.timeout = 30
+Geocoder.configure(
+    :timeout => 15,
+    
+    :use_https => true
+    )
