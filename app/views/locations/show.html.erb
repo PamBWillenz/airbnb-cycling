@@ -67,6 +67,18 @@
   <p><%= @location.bike_type %></p>
 </section>
 
+<section id="profile">
+    <div class="row">
+      <div class="col-md-3">
+        <%= image_tag @location.member.profile.profile_pic(:small) %>
+      </div>
+      <div class="col-md-9">
+        <h3>HOST is <%= @location.member.name %></h3>
+        <h5><%= @location.member.profile.bio %></h5>
+      </div>
+    </div>
+</section>
+
 <%= link_to 'Edit Location', edit_location_path(@location) %> |
 <%= link_to 'View Location', locations_path %>
 
