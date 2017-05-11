@@ -14,13 +14,11 @@ feature "Member reserves a location" do
 
     execute_script("
       $('#datepicker-start').pickadate('picker').set(
-        'select', new Date((new Date()).valueOf() + 1000*3600*24),
-        { format: 'yyyy-mm-dd' });"
+        'select', new Date((new Date()).valueOf() + 1000*3600*24);"
       )
     execute_script("
       $('#datepicker-end').pickadate('picker').set(
-        'select', new Date((new Date()).valueOf() + 1000*3600*48),
-        { format: 'yyyy-mm-dd' });"
+        'select', new Date((new Date()).valueOf() + 1000*3600*48);"
       )
 
     click_button "Make a Reservation"
