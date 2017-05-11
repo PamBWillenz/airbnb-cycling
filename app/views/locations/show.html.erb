@@ -48,9 +48,9 @@
 <br/><br/>
 
 <h1><%= @location.title %></h1>
-<!-- <div id="map-container">
-  <div id="map-canvas"></div> -->
-<!-- </div> -->
+<div id="map-container">
+  <div id="map-canvas"></div>
+</div>
 
 <section>
   <h3>Description:</h3>
@@ -85,13 +85,13 @@
 
 
 <script type="text/javascript">
-  // handler = Gmaps.build('Google');
-  // handler.buildMap({ provider: {}, internal: {id: 'map-canvas'}}, function(){
-  //   markers = handler.addCircle(<%=raw @coordinates.to_json %>);
-  //   handler.bounds.extendWith(markers);
-  //   handler.fitMapToBounds(markers);
-  //   handler.getMap().setZoom(15);
-  // });
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map-canvas'}}, function(){
+    markers = handler.addCircle(<%=raw @coordinates.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds(markers);
+    handler.getMap().setZoom(15);
+  });
 
   $('#calendar').fullCalendar({
  events: '<%=@location.id%>.json',
