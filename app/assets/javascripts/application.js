@@ -11,18 +11,24 @@
 // about supported directives.
 //
 //= require jquery
-//= require tether
-//= require bootstrap-sprockets
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
-//= require dropzone
 //= require jquery-ui/widgets/datepicker
 //= require jquery-ui/widgets/sortable
 //= require pickadate/picker
 //= require pickadate/picker.date
 //= require moment
 //= require fullcalendar
+//= require tether
+//= require bootstrap-sprockets
+//= require dropzone
 //= require underscore
 //= require gmaps/google
 //= require markerclusterer
+//= require turbolinks
 //= require_tree .
+
+$(document).on("page:load ready", function(){
+    $("input.datepicker").datepicker();
+});
+

@@ -30,6 +30,7 @@ gem 'aws-sdk', '~> 2'
 gem 'pundit'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'dropzonejs-rails'
+gem 'jquery-turbolinks'
 
 gem 'geocoder'
 gem 'underscore-rails'

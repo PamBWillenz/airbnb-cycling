@@ -9,11 +9,11 @@ feature "Member views location", js: true do
     login_as(member, scope: :member)
   end
 
-  # scenario "by visiting location page", js: true do
-  #   visit location_path(location)
-  #   expect(page).to have_css("div#map-container")
-  #   page.has_css?("td.fc-bgevent", count: 4)
-  # end
+  scenario "by visiting location page", js: true do
+    visit location_path(location)
+    expect(page).to have_css("div#map-container")
+    page.has_css?("td.fc-bgevent", count: 4)
+  end
 
   # WAITING ON JS FIX FOR GOOGLE MAP API
 end

@@ -5,10 +5,10 @@
       <br />
         <%= form_tag({controller: "locations", action: "add_available_dates"}, method: "get", class: "form-inline") do %>
         <div class="form-group">
-          <%= text_field_tag :start_date, nil, id: 'datepicker-start', class: "form-control", placeholder: "Start Date" %>
+          <%= text_field_tag :start_date, nil, id: "datepicker-start", class: "form-control", placeholder: "Start Date" %>
         </div>
         <div class="form-group">
-          <%= text_field_tag :end_date, nil, id: 'datepicker-end', class: "form-control", placeholder: "End Date" %>
+          <%= text_field_tag :end_date, nil, id: "datepicker-end", class: "form-control", placeholder: "End Date" %>
         </div>
           </br><br/>
           <%= submit_tag "Add available dates" %>

@@ -1,12 +1,17 @@
-jQuery(function($) {
-  $("#datepicker-start").pickadate({
-          dateFormat: "d MM, yy"
-  });
-  $("#datepicker-end").pickadate({
-          dateFormat: "d MM, yy"
+$(document).ready('turbolinks:load', function() { 
+  jQuery(function($) {
+    $("#datepicker-start").pickadate({
+            dateFormat: "d MM, yy"
+    });
+    $("#datepicker-end").pickadate({
+            dateFormat: "d MM, yy"
+    });
   });
 });
-// $(document).on('turbolinks:load', function(){
+
+// LONGER VERSION
+
+// $(document).ready('turbolinks:load', function(){
 //   jQuery(function($) {
 //     var dateFormat = "dd/mm/yy",
 //       from = $("#datepicker-start").datepicker({
