@@ -1,14 +1,14 @@
 $(function() {
-    $('#datepicker-start').datepicker()
-    $('#datepicker-end').datepicker()
+    $('#datepicker-start').pickadate()
+    $('#datepicker-end').pickadate()
 });
 
 // $(document).ready('turbolinks:load', function() { 
 //   jQuery(function($) {
-//     $("#datepicker-start").datepicker({
+//     $("#datepicker-start").pickadate({
 //             dateFormat: "d MM, yy"
 //     });
-//     $("#datepicker-end").datepicker({
+//     $("#datepicker-end").pickadate({
 //             dateFormat: "d MM, yy"
 //     });
 //   });

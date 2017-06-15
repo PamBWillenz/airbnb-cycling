@@ -11,14 +11,14 @@ feature "Member reserves a location" do
   scenario "by visiting location show page and selecting dates", js: true do
     visit location_path(location)
     expect(page).to have_content location.description
-
+  
     execute_script("
-      $('#datepicker-start').pickadate('picker').set(
-        'select', new Date((new Date()).valueOf() + 1000*3600*24);"
+      $('#datepicker-start').datepicker(
+        'setDate', new Date((new Date()).valueOf() + 1000*3600*24));"
       )
     execute_script("
-      $('#datepicker-end').pickadate('picker').set(
-        'select', new Date((new Date()).valueOf() + 1000*3600*48);"
+      $('#datepicker-end').datepicker(
+        'setDate', new Date((new Date()).valueOf() + 1000*3600*48));"
       )
 
     click_button "Make a Reservation"
