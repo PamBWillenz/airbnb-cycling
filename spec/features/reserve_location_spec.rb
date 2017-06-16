@@ -6,19 +6,24 @@ feature "Member reserves a location" do
 
   before do 
     login_as(member, scope: :member)
+    host = location.member
+    FactoryGirl.create(:profile_with_pic, member: host)
   end
 
   scenario "by visiting location show page and selecting dates", js: true do
     visit location_path(location)
     expect(page).to have_content location.description
+    expect(page).to have_content location.member.profile.bio
   
     execute_script("
-      $('#datepicker-start').datepicker(
-        'setDate', new Date((new Date()).valueOf() + 1000*3600*24));"
+      $('#datepicker-start').pickadate('picker').set(
+        'select', new Date((new Date()).valueOf() + 1000*3600*24),
+        { format: 'yyyy-mm-dd'});"
       )
     execute_script("
-      $('#datepicker-end').datepicker(
-        'setDate', new Date((new Date()).valueOf() + 1000*3600*48));"
+      $('#datepicker-end').pickadate('picker').set(
+        'select', new Date((new Date()).valueOf() + 1000*3600*48),
+        { format: 'yyyy-mm-dd'});"
       )
 
     click_button "Make a Reservation"
