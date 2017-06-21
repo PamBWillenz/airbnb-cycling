@@ -13,4 +13,16 @@ RSpec.describe AvailableDate, type: :model do
   describe "assocations" do 
     it { should belong_to(:location) }
   end
+
+  describe ".upcoming" do
+    it "returns only future available_dates" do
+      location = FactoryGirl.create(:location_with_available_dates)
+      upcoming_available_date = location.available_dates.first
+      past_available_date = FactoryGirl.build(:available_date, available_date: Date.yesterday, location: location)
+      past_available_date.save(validate: false)
+
+      expect(AvailableDate.upcoming).to include(upcoming_available_date)
+      expect(AvailableDate.upcoming).not_to include(past_available_date)  
+    end
+  end
 end

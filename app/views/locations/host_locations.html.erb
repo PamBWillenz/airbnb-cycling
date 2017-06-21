@@ -1,7 +1,9 @@
       <div class="col-md-12 center">
         <br />
         <h5 class="card-link center"><%= link_to 'New Location', new_location_path, class: "btn btn-primary text-white" %></h5><br />
-
+        <% if @locations.empty? %>
+          <h4<em>You have no locations listed.</em></h4>
+        <% else %>
         <% @locations.each do |location| %>
           <div class="card">
             <div class="card-block">
@@ -30,6 +32,6 @@
               </div>
             </div>
           </div>
-          
+        <% end %>  
         <% end %>  
       </div>       

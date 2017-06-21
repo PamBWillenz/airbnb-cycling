@@ -17,6 +17,10 @@ class Location < ApplicationRecord
   geocoded_by :full_street_address
   after_validation :geocode, if: ->(obj){ obj.address_1.present? and obj.address_changed? }
 
+  scope :nearby, ->(address) { near(address, 50) if address.present? }
+  scope :with_available_dates, ->(date_range_array) { 
+    joins(:available_dates).merge(AvailableDate.available_for_reservation(date_range_array)) if date_range_array.present? }
+
   def full_street_address
     [address_1, city, state].compact.join(", ")
   end
