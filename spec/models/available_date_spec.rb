@@ -25,4 +25,32 @@ RSpec.describe AvailableDate, type: :model do
       expect(AvailableDate.upcoming).not_to include(past_available_date)  
     end
   end
+
+  describe ".unreserved" do 
+    it "returns only unreserved available_dates" do 
+      location = FactoryGirl.create(:location_with_available_dates)
+      unreserved_available_date = location.available_dates.first
+      booked_location = FactoryGirl.build(:available_date, booked: true, location: location)
+      booked_location.save(validate: false)
+
+      expect(AvailableDate.unreserved).to include(unreserved_available_date)
+      expect(AvailableDate.unreserved).not_to include(booked_location)
+    end
+  end
+
+  
+
+  describe ".available_for_reservation" do 
+    it "returns available dates for reservations" do 
+      location = FactoryGirl.create(:location_with_available_dates)
+      available_for_reservation = AvailableDate.create(location: location, available_date: Date.tomorrow, booked: false)
+      date_range_array = Date.tomorrow..Date.today + 2.days 
+      not_available_for_reservation = AvailableDate.create(location: location, available_date: Date.tomorrow, booked: true)
+      
+
+      expect(AvailableDate.available_for_reservation(date_range_array)).to include(available_for_reservation)
+      expect(AvailableDate.available_for_reservation(date_range_array)).not_to include(not_available_for_reservation)
+      
+    end
+  end
 end
