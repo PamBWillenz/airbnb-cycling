@@ -55,4 +55,24 @@ RSpec.describe Location, type: :model do
       end
     end
   end
+
+
+  describe ".nearby" do 
+    it "searches the nearby location" do 
+      location = FactoryGirl.create(:location)
+      address_search = "Sun Valley, Idaho"
+      expect(Location.nearby(address_search)).to include(location)
+    end 
+  end 
+
+  describe ".with_available_dates" do 
+    it "searches for locations with available dates for reservation" do 
+      location = FactoryGirl.create(:location_with_available_dates)
+      date_range_array = Date.tomorrow..Date.today + 2.days
+      address_search = "Sun Valley, Idaho"
+      expect(Location.with_available_dates(date_range_array)).to include(location)
+    end
+  end
 end
+
+
