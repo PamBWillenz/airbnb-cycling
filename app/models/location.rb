@@ -21,6 +21,9 @@ class Location < ApplicationRecord
   scope :with_available_dates, ->(date_range_array) { 
     joins(:available_dates).merge(AvailableDate.available_for_reservation(date_range_array)) if date_range_array.present? }
 
+  scope :with_bike_type, ->(bike) { where(bike_type: bike) if bike.present? }
+  scope :with_guests, ->(no_of_guests) { where(guests: no_of_guests) if no_of_guests.present? }
+
   def full_street_address
     [address_1, city, state].compact.join(", ")
   end
