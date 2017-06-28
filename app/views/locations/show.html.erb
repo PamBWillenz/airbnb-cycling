@@ -92,20 +92,21 @@
     handler.fitMapToBounds(markers);
     handler.getMap().setZoom(15);
   });
+</script>
 
-  $('#calendar').fullCalendar({
+<script>
+$('#calendar').fullCalendar({
  events: '<%=@location.id%>.json',
  eventBackgroundColor: "green"
  });
 </script>
 
-
-<script type="text/javascript">
- $('#calendar').fullCalendar({
- events: '<%=@location.id%>.json',
- eventBackgroundColor: "#bdc3c7" #a light grey
- });
-</script>
+ // <script type="text/javascript">
+ //   $('#calendar').fullCalendar({
+ //   events: '<%=@location.id%>.json',
+ //   eventBackgroundColor: "#bdc3c7" #a light grey
+ //   });
+ // </script>
 
 <script type="text/javascript">
 $(function() {
