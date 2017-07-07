@@ -16,7 +16,9 @@ Airbnb Cycling is airbnb clone that caters to cyclists who travel [here](https:/
 
 * Twitter Bootstrap 4 for CSS and components.
 
-* PostgreSQL for database queries involving users, posts and comments.
+* PostgreSQL for database queries involving members, hosts and guests
+
+* Date Picker Calendar
 
 * Devise for user forms and security.
 
