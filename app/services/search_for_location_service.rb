@@ -1,4 +1,4 @@
-class SearchForLocationsService
+class SearchForLocationService
   attr_reader :params
 
   def initialize(params)

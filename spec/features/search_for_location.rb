@@ -33,7 +33,7 @@ feature "Member searches for locations" do
   scenario "by place and dates range" do 
     member = FactoryGirl.create(:member)
     member.create_profile
-    location_va = FactoryGirl.create(:location, title: "Virgina Location with Date A", member: member)
+    location_va = FactoryGirl.create(:location, title: "Virginia Location with Date A", member: member)
     FactoryGirl.create(:available_date, location: location_va, date: Date.today + 3.days)
     FactoryGirl.create(:available_date, location: location_va, date: Date.today + 5.days)
 
@@ -49,7 +49,7 @@ feature "Member searches for locations" do
     fill_in "end_date", with: Date.today + 5.days
     click_button "Find Properties"
 
-    expect(page).to have_content("Virgina Location Date A")
+    expect(page).to have_content("Virginia Location Date A")
     expect(page).to have_content("Sun Valley Location Date A")
     expect(page.all(h2).count.to eq 2)
   end
