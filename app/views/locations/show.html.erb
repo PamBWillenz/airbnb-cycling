@@ -5,84 +5,86 @@
       <div class="col-md-6">
         <h1 class="text-uppercase"><%= @location.title %></h1>
       </div>
-<div>
-<%= form_for Reservation.new, url: new_reservation_path, html: { method: :get, class: "form-inline" } do |f| %>
-    <%= f.hidden_field :location_id, value: @location.id %>
-    <%= f.hidden_field :member_id, value: current_member.id %>
-  <div class="form-group">
-    <%= f.text_field :start_date, id: "datepicker-start", class: "form-control", placeholder: "check-in" %>
-  </div>
-  <div>
-    <%= f.text_field :end_date, id: "datepicker-end", class: "form-control", placeholder: "check-out" %>
-  </div>
-    
-    <%= f.submit "Make a Reservation", class: "btn btn-warning pull-right" %>
-<% end %>  
-</div>
+
 
       <div class="col-md-6 pull-right">
-        <div class="pull-right">
-          <h5><%= @location.address_1 %></h5>
-          <h5><%= @location.address_2 if @location.address_2 %></h5>
-          <h5><%= @location.city if @location.city %></h5>
-          <h5><%= @location.state if  @location.state %></h5>
-          <h5><%= "#{@location.postcode}" if @location.postcode %></h5>
-          <h5><%= @location.bike_type if @location.bike_type %></h5>
+        <div>
+          <%= form_for Reservation.new, url: new_reservation_path, html: { method: :get, class: "form-inline" } do |f| %>
+              <%= f.hidden_field :location_id, value: @location.id %>
+              <%= f.hidden_field :member_id, value: current_member.id %>
+            <div class="form-group">
+              <%= f.text_field :start_date, id: "datepicker-start", class: "form-control", placeholder: "check-in" %>
+            </div>
+            <div>
+              <%= f.text_field :end_date, id: "datepicker-end", class: "form-control", placeholder: "check-out" %>
+            </div>
+              <br />
+              <%= f.submit "Make a Reservation", class: "btn btn-warning pull-right" %>
+          <% end %>  
         </div>
         
       </div>
     </div>
+
+    <div class="pull-right">
+      <h5><%= @location.address_1 %></h5>
+      <h5><%= @location.address_2 if @location.address_2 %></h5>
+      <h5><%= @location.city if @location.city %></h5>
+      <h5><%= @location.state if  @location.state %></h5>
+      <h5><%= "#{@location.postcode}" if @location.postcode %></h5>
+      <h5><%= @location.bike_type if @location.bike_type %></h5>
+    </div>
   </section>
 
-<section>
-  <div class="pictures">
-    <% @location_images.each do |image| %>
-      <%= image_tag image.picture.url(:large), class: "location-picture", alt: "location picture" %>
-    <% end %>
-  </div>
-</section>
-
-<div id="calendar", style='width: 600px;'></div>
-<div style='width:800px;'>
-  
-<br/><br/>
-
-<h1><%= @location.title %></h1>
-<div id="map-container">
-  <div id="map-canvas"></div>
-</div>
-
-<section>
-  <h3>Description:</h3>
-  <p><%= @location.description %></p>
-</section>
-
-<section>
-  <h3>Number of Guests Allowed:</h3>
-  <p><%= @location.guests %></p>
-</section>
-
-<section>
-  <h3>Bike Type:</h3>
-  <p><%= @location.bike_type %></p>
-</section>
-
-<section id="profile">
-    <div class="row">
-      <div class="col-md-3">
-        <%= image_tag @location.member.profile.profile_pic(:small) %>
-      </div>
-      <div class="col-md-9">
-        <h3>HOST is <%= @location.member.name %></h3>
-        <h5><%= @location.member.profile.bio %></h5>
-      </div>
+  <section>
+    <div class="pictures">
+      <% @location_images.each do |image| %>
+        <%= image_tag image.picture.url(:large), class: "location-picture", alt: "location picture" %>
+      <% end %>
     </div>
-</section>
+  </section>
 
-<%= link_to 'Edit Location', edit_location_path(@location) %> |
-<%= link_to 'View Location', locations_path %>
+  <div id="calendar", style='width: 600px;'></div>
+  <div style='width:800px;'>
+  
+  <br/><br/>
 
+  <h1><%= @location.title %></h1>
+  <div id="map-container">
+    <div id="map-canvas"></div>
+  </div>
 
+  <section>
+    <h3>Description:</h3>
+    <p><%= @location.description %></p>
+  </section>
+
+  <section>
+    <h3>Number of Guests Allowed:</h3>
+    <p><%= @location.guests %></p>
+  </section>
+
+  <section>
+    <h3>Bike Type:</h3>
+    <p><%= @location.bike_type %></p>
+  </section>
+
+  <section id="profile">
+      <div class="row">
+        <div class="col-md-3">
+          <%= image_tag @location.member.profile.profile_pic(:small) %>
+        </div>
+        <div class="col-md-9">
+          <h3>HOST is <%= @location.member.name %></h3>
+          <h5><%= @location.member.profile.bio %></h5>
+        </div>
+      </div>
+  </section>
+
+  <%= link_to 'Edit Location', edit_location_path(@location) %> |
+  <%= link_to 'View Location', locations_path %>
+
+</div>
 
 <script type="text/javascript">
   handler = Gmaps.build('Google');
@@ -92,25 +94,14 @@
     handler.fitMapToBounds(markers);
     handler.getMap().setZoom(15);
   });
-</script>
 
-<script>
-$('#calendar').fullCalendar({
- events: '<%=@location.id%>.json',
- eventBackgroundColor: "green"
- });
-</script>
+  $('#calendar').fullCalendar({
+   events: '<%=@location.id%>.json',
+   eventBackgroundColor: "green"
+   });
 
- // <script type="text/javascript">
- //   $('#calendar').fullCalendar({
- //   events: '<%=@location.id%>.json',
- //   eventBackgroundColor: "#bdc3c7" #a light grey
- //   });
- // </script>
-
-<script type="text/javascript">
-$(function() {
-  $('#datepicker-start').pickadate()
-  $('#datepicker-end').pickadate()
-}); 
+  $(function() {
+    $('#datepicker-start').pickadate()
+    $('#datepicker-end').pickadate()
+  }); 
 </script>
