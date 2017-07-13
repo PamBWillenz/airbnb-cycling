@@ -15,6 +15,9 @@ feature "Member searches for locations" do
     visit locations_path
     expect(page).to have_content @first_location.title
     expect(page).not_to have_content @last_location.title
+    click_link "Next"
+    expect(page).to have_content @last_location.title
+    expect(page).not_to have_content @first_location.title
   end
 
   scenario "by filling out search form and clicks to view more" do 

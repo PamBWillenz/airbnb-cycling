@@ -41,6 +41,7 @@ gem 'jquery-ui-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'pickadate-rails'
+gem 'kaminari'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
