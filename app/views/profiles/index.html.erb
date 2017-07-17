@@ -16,7 +16,9 @@
 <div class="center">  
   <h1>Traveling Cyclist Profiles</h1>
   <br />
-  <br />
+ 
+  <%= link_to 'Home', root_path, class: "btn btn-primary text-white" %>
+  
   <div class="card-columns">
     <% @profiles.each do |profile| %>
     <div class="card">
@@ -27,9 +29,3 @@
       </div>
     </div>
     <% end %> 
-  </div>
-  <%= link_to 'Home', root_path, class: "btn btn-primary text-white" %>
-</div>
-
-
-    

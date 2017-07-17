@@ -13,9 +13,9 @@ class LocationsController < ApplicationController
         address: params[:address],
         bike_type: params[:bike_type],
         guests: params[:guests]
-        }).matches.includes(:location_images, :member).page(params[:page]).per(10)
+        }).matches.includes(:location_images, :member).page(params[:page]).per(2)
     else
-    @locations = Location.all.includes(:location_images, :member).page(params[:page]).per(10)
+    @locations = Location.all.includes(:location_images, :member).page(params[:page]).per(2)
     end
   end
 

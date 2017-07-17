@@ -42,6 +42,7 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'pickadate-rails'
 gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

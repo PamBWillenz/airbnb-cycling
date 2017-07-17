@@ -38,6 +38,8 @@
             <%= submit_tag "Find Locations", name: "commit", class: "btn btn-primary" %>
           </li>
         <% end %>
+        <br/><br/>
+        <h5 class="card-link"><%= link_to 'New Location', new_location_path, class: "btn btn-primary text-white" %><h5> 
         </ul>
         
       </div>
@@ -62,17 +64,20 @@
                 <h5 class="card-link float-xs-right text-muted"><%= link_to 'Edit location', edit_location_path(location) %><h5>
                 <h5 class="card-link"><%= link_to 'Delete location', location, method: :delete, data: { confirm: 'Are you sure?' } %><h5>  
                   <br /><br />
+
                 
             
               </div>
             </div>
           </div>
         </div>
-        <%= paginate @locations %>
       <% end %>
 
-      <h5 class="card-link"><%= link_to 'New Location', new_location_path, class: "btn btn-primary text-white" %><h5> 
 
+      <div class="text-xs-center">
+        <%= paginate @locations, theme: 'twitter-bootstrap-4' %>
+      </div>
+      
 <script type="text/javascript">
 $(function() {
   $('#datepicker-start').pickadate()

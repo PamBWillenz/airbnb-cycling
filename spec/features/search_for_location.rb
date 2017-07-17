@@ -37,13 +37,11 @@ feature "Member searches for locations" do
     member = FactoryGirl.create(:member)
     member.create_profile
     location_va = FactoryGirl.create(:location, title: "Virginia Location with Date A", member: member)
-    FactoryGirl.create(:available_date, location: location_va, date: Date.today + 3.days)
-    FactoryGirl.create(:available_date, location: location_va, date: Date.today + 5.days)
+    create_available_dates(location_va)
 
     location_sun_valley = FactoryGirl.create(:location, title: "Sun Valley Location with Date A", member: member)
-    FactoryGirl.create(:available_date, location: location_sun_valley, date: Date.today + 3.days)
-    FactoryGirl.create(:available_date, location: location_sun_valley, date: Date.today + 5.days)
-
+    create_available_dates(location_sun_valley)
+  
     visit root_path
     expect(page).to have_button "Find Properties"
 
@@ -55,6 +53,11 @@ feature "Member searches for locations" do
     expect(page).to have_content("Virginia Location Date A")
     expect(page).to have_content("Sun Valley Location Date A")
     expect(page.all(h2).count.to eq 2)
+
+    def create_available_dates(location)
+        FactoryGirl.create(:available_date, location: location, date: Date.today + 3.days)
+        FactoryGirl.create(:available_date, location: location, date: Date.today + 5.days)
+    end
   end
 end
 
