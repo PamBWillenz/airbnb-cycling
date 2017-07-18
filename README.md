@@ -10,7 +10,9 @@ Airbnb Cycling is airbnb clone that caters to cyclists who travel [here](https:/
 
 * Ruby 2.3
 
-* Pagination with will_paginate-bootstrap
+* Pagination with kaminari-bootstrap
+
+* Google Maps API
 
 * TDD with Rspec and Capybara
 
