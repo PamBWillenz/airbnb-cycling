@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Host views calendar" do
+feature "Host views calendar", js: true do
   let(:location) {FactoryGirl.create(:location_with_available_dates)}
   let(:guest) { FactoryGirl.create(:member, email: "kitty@rocks.com") }
 
