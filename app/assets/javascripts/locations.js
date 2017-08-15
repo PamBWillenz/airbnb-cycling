@@ -3,8 +3,6 @@ $(function() {
     $('#datepicker-end').pickadate()
 });
 
-// REGULAR VERSION
-
 // $(document).ready('turbolinks:load', function() { 
 //   jQuery(function($) {
 //     $("#datepicker-start").pickadate({
