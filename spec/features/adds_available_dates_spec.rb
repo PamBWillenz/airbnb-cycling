@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Host adds available dates to a location" do 
+feature "Host adds available dates to a location", js: true do 
   let(:location) {FactoryGirl.create(:location)}
 
   before do 
