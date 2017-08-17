@@ -22,5 +22,7 @@ Airbnb Cycling is airbnb clone that caters to cyclists who travel [here](https:/
 
 * Date Picker Calendar
 
+* Search
+
 * Devise for user forms and security.
 
