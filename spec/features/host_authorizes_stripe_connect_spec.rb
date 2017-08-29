@@ -5,6 +5,7 @@ feature "Host authorizes Stripe Connect" do
 
 
   before do 
+    binding.pry
     login_as(member, scope: :member)
   end
 
