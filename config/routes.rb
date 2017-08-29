@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :members
 
   resources :members do
+    get :payout_account, on: :member
     resources :profiles
   end
 
