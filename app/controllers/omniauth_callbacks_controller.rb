@@ -12,11 +12,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     # anything else you need to do in response --
 
-      redirect_to_host_locations_path,
-        notice: "Congrats on connecting your Stripe account!"
+      redirect_to host_locations_path, notice: "Congrats on connecting your Stripe account!"
     else
-      redirect_to_payout_account_member_path(current_member), alert:
+      redirect_to payout_account_member_path(current_member), alert:
         "Please connect to stripe before you continue."
-      end
     end
+  end
 end
