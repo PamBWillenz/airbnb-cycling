@@ -1,5 +1,9 @@
       <div class="col-md-12 center">
         <br />
+        <% if current_member.stripe_user_id.blank? %>
+          <h5 class="card-link center"><%= link_to 'Get Paid', payout_account_member_path(current_member), class: "btn btn-primary text-white" %></h5><br />
+        <% end %>
+
         <h5 class="card-link center"><%= link_to 'New Location', new_location_path, class: "btn btn-primary text-white" %></h5><br />
         <% if @locations.empty? %>
           <h4<em>You have no locations listed.</em></h4>

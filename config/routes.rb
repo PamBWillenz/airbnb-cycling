@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'host_locations', to: 'locations#host_locations'
+  get 'payout_account', to: 'members#payout_account'
 
   resources :locations do 
     member do 

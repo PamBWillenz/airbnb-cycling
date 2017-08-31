@@ -29,7 +29,7 @@
       <%= link_to 'AirBnB Cycling', root_path, class: 'navbar-brand' %>
     </span>
       
-      <% if member_signed_in? %>
+    <% if member_signed_in? %>
         <ul class="navbar-text float-xs-right text-muted">
           <%= link_to 'Sign out', destroy_member_session_path, method: :delete %>
         </ul>  
@@ -53,7 +53,7 @@
         </ul> 
       <% else %>
         <ul class="navbar-text float-xs-right text-muted">  
-          <%= link_to "Become a host", new_location_path, class: "btn btn-warning btn-property" %>
+          <%= link_to "Become a host", payout_account_path, class: "btn btn-warning btn-property" %>
         </ul>
       <% end %>
 
@@ -61,7 +61,7 @@
         <%= link_to "Reservations", reservations_path %>
       </ul>
 
-      <% else %>
+    <% else %>
         <ul class="navbar-text float-xs-right text-muted">  
           <%= link_to "Sign up", new_member_registration_path %>
         </ul>
@@ -69,7 +69,7 @@
           <%= link_to "Sign in", new_member_session_path %>
         </ul>  
         <ul class="navbar-text float-xs-right text-muted">  
-          <%= link_to "Become a host", new_location_path, class: "btn btn-warning btn-property" %>
+          <%= link_to "Become a host", payout_account_path, class: "btn btn-warning btn-property" %>
         </ul>
       <% end %> 
 
