@@ -26,3 +26,5 @@ Airbnb Cycling is airbnb clone that caters to cyclists who travel [here](https:/
 
 * Devise for user forms and security.
 
+* Stripe API for Payments
+
