@@ -248,7 +248,7 @@ Devise.setup do |config|
                   ENV['stripe_secret_key'],
                   scope: 'read_write',
                   stripe_landing: 'register',
-                  redirect_uri: ENV['stripe_redirect']
+                  callback_path: ENV['stripe_redirect']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
