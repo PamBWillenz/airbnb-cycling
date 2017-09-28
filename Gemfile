@@ -44,6 +44,7 @@ gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 
 gem 'omniauth-stripe-connect'
+gem 'stripe'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

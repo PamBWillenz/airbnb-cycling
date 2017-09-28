@@ -20,6 +20,7 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
+    @token = params[:stripe_token]
     respond_to do |format|
       if @reservation.save
         @reservation.dates_booked

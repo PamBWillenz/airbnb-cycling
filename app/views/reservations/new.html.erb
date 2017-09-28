@@ -4,13 +4,39 @@
     Reservation Summary:
   </div>
 
+  <div id="flash-messages"></div>
+
+  <div id="stripe-error">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+  </div>
+
   <div>
-      <%= form_for @reservation do |f| %>
+      <%= form_for @reservation, html: (id: "credit_card_form") do |f| %>
         <%= f.text_field :start_date, id: "datepicker-start", value: @reservation.start_date.strftime() %>
         <%= f.text_field :end_date, id: "datepicker-end", value: @reservation.end_date.strftime() %>
         <%= f.hidden_field :location_id, value: @reservation.location.id %>
         <%= f.hidden_field :member_id, value: current_member.id %>
         <%= f.submit "Confirm Reservation", class: "btn btn-warning" %>
+
+        <%= text_field_tag :card_number, "", class: "credit-card-number",
+          "data-stripe" => "number", placeholder: "Credit Card Number",
+          required: "required" %>
+        <%= select_tag :exp_month, 
+          options_for_select(Date::MONTHNAMES.compact.each_with_index.map {
+          |name,i| ["#{i+1} - #{name}", i+1] }), include_blank: false,
+          "data-stripe" => "exp-month", class: "credit-card-month" %>
+
+        <%= select_tag :exp_year,
+          options_for_select((Date.current.year..(Date.current.year+10)).to_a
+          ), include_blank: false, "data-stripe" => "exp-year", class:
+          "credit-card-year" %>
+        <%= text_field_tag :card_verification, "", class:
+          "credit-card-cvv", "data-stripe" => "cvv" %>
+        <%= text_field_tag :address_zip, "", class: "credit-card-zip", 
+          "data-stripe" => "address_zip" %>
+
+        <div id="wait-message" style="display:none"><h3 class="wait-text">
+          Please wait...</h3></div>
     <% end %>  
   </div>
 </div>

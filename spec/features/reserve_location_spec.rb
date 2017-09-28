@@ -45,4 +45,15 @@ feature "Member reserves a location" do
       expect(first_available_date.booked).to eq true
       #expect(second_available_date.booked).to eq false
   end
+
+  scenario "guest reserves location", js: true do 
+    fill_in "card_number", with: "4242 4242 4242 4242"
+    select "January"
+    select "2020"
+    fill_in "card_verification", with: "123"
+    fill_in "address_zip", with: "10001"
+
+    expect(Reservation.last).to have_attributes(id_for_credit_card_charge:
+      a_string_starting_with("ch"))
+  end
 end
