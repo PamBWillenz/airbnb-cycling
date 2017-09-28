@@ -35,6 +35,12 @@ RSpec.configure do |config|
     config.allow_url("https://maps.googleapis.com/maps-api-v3/api/js/28/2/util.js")
     config.allow_url("https://maps.googleapis.com/maps-api-v3/api/js/28/2/stats.js")
     config.allow_url("csi.gstatic.com")
+    config.allow_url("https://m.stripe.com/4")
+    config.allow_url("m.stripe.com")
+    config.allow_url("https://stripensrq.global.ssl.fastly.net")
+    config.allow_url("https://js.stripe.com/v2/")
+    config.allow_url("js.stripe.com")
+    config.allow_url("api.stripe.com")
   end
 
   config.before(:each) do

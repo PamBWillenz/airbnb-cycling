@@ -28,8 +28,7 @@ jQuery(function ($) {
    return false;
   };
   show_error = function (message) {
-    $("#flash-messages").html('<div class="alert">
-      <div id="flash_alert"><p class="error-color">' + There is an error + '</p></div></div>');
+    $("#flash-messages").html('<div class="alert"><div id="flash_alert"><p class="error-color">' + message + '</p></div></div>');
     return false;
   };
 });

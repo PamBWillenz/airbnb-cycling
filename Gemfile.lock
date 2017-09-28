@@ -39,7 +39,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.4.0)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     arel (7.1.4)
     autoprefixer-rails (6.5.2)
       execjs
@@ -62,7 +63,7 @@ GEM
       rails (>= 3.1)
     builder (3.2.2)
     byebug (9.0.6)
-    capybara (2.7.1)
+    capybara (2.13.0)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -72,8 +73,8 @@ GEM
     capybara-email (2.5.0)
       capybara (~> 2.4)
       mail
-    capybara-webkit (1.11.1)
-      capybara (>= 2.3.0, < 2.8.0)
+    capybara-webkit (1.14.0)
+      capybara (>= 2.3.0, < 2.14.0)
       json
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -205,9 +206,10 @@ GEM
       pry (>= 0.9.10, < 0.11.0)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    public_suffix (3.0.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
-    rack (2.0.1)
+    rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.0)
@@ -306,7 +308,7 @@ GEM
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    xpath (2.0.0)
+    xpath (2.1.0)
       nokogiri (~> 1.3)
 
 PLATFORMS
@@ -319,7 +321,7 @@ DEPENDENCIES
   bootstrap4-kaminari-views
   byebug (= 9.0.6)
   capybara-email
-  capybara-webkit (= 1.11.1)
+  capybara-webkit
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise

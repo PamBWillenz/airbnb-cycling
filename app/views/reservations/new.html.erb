@@ -11,7 +11,7 @@
   </div>
 
   <div>
-      <%= form_for @reservation, html: (id: "credit_card_form") do |f| %>
+      <%= form_for @reservation, html: {id: "credit_card_form"} do |f| %>
         <%= f.text_field :start_date, id: "datepicker-start", value: @reservation.start_date.strftime() %>
         <%= f.text_field :end_date, id: "datepicker-end", value: @reservation.end_date.strftime() %>
         <%= f.hidden_field :location_id, value: @reservation.location.id %>
@@ -31,7 +31,7 @@
           ), include_blank: false, "data-stripe" => "exp-year", class:
           "credit-card-year" %>
         <%= text_field_tag :card_verification, "", class:
-          "credit-card-cvv", "data-stripe" => "cvv" %>
+          "credit-card-cvv", "data-stripe" => "cvv", placeholder: "cvv" %>
         <%= text_field_tag :address_zip, "", class: "credit-card-zip", 
           "data-stripe" => "address_zip" %>
 

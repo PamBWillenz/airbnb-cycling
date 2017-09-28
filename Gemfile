@@ -74,7 +74,7 @@ group :development, :test do
 
   gem 'better_errors'
     gem 'capybara-email'
-    gem 'capybara-webkit', '1.11.1'
+    gem 'capybara-webkit'
     gem 'factory_girl_rails'
     gem 'ffaker'
     gem 'database_cleaner'
