@@ -27,7 +27,40 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  Capybara.javascript_driver = :webkit
+  #Capybara.javascript_driver = :webkit
+
+  # ADD TO STOP QT PLUGIN MESSAGES ******
+
+  class WebkitStderrWithQtPluginMessagesSuppressed
+    IGNOREABLE = Regexp.new( [
+      'CoreText performance',
+      'userSpaceScaleFactor',
+      'Internet Plug-Ins',
+      'is implemented in bo'
+    ].join('|') )
+
+  def write(message)
+    if message =~ IGNOREABLE
+      0
+    else
+      puts(message)
+      1
+    end
+  end
+end
+
+Capybara.register_driver :webkit_with_qt_plugin_messages_suppressed do |app|
+  Capybara::Webkit::Driver.new(
+    app,
+    Capybara::Webkit::Configuration.to_hash.merge(  # <------ maintain configuration set in Capybara::Webkit.configure block
+      stderr: WebkitStderrWithQtPluginMessagesSuppressed.new
+    )
+  )
+end
+
+Capybara.javascript_driver = :webkit_with_qt_plugin_messages_suppressed
+
+# END OF STOPPING PLUGIN MESSAGES
 
   Capybara::Webkit.configure do |config|
     config.allow_url("https://maps.googleapis.com/maps-api-v3/api/js/28/2/common.js")
@@ -41,6 +74,10 @@ RSpec.configure do |config|
     config.allow_url("https://js.stripe.com/v2/")
     config.allow_url("js.stripe.com")
     config.allow_url("api.stripe.com")
+
+    config.allow_url("example.com")
+    config.ignore_ssl_errors
+    config.skip_image_loading
   end
 
   config.before(:each) do

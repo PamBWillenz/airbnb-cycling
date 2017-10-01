@@ -1,5 +1,5 @@
 Geocoder.configure(
-    :timeout => 15,
+    :timeout => 8,
     
     :use_https => true
     )
