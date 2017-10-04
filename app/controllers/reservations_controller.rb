@@ -21,8 +21,23 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @token = params[:stripe_token]
+
+    if @reservation.valid?
+      begin
+        @customer_charge = charge_customer(@token, @location, @reservation)
+        @reservation.id_for_credit_charge = @customer_charge.id
+      rescue Stripe::CardError => e 
+        body = e.json_body
+        message = body[:error][:message]
+        flash[:alert] = message
+      end
+    else
+      flash[:alert] = "Some of the dates of your reservation are not available. Please try different dates."
+    end
+
     respond_to do |format|
-      if @reservation.save
+      if !@customer_charge.nil?
+        @reservation.save
         @reservation.dates_booked
         format.html { redirect_to confirmation_reservation_path(@reservation), notice: "Reservation successfully created." }
       else
@@ -45,5 +60,12 @@ class ReservationsController < ApplicationController
 
   def reservation_params
     params.require(:reservation).permit(:start_date, :end_date, :location_id, :member_id)
+  end
+
+  def charge_customer(source, location, reservation)
+    CreditCardService.new({
+      source: source,
+      reservation: reservation
+    }).charge_customer
   end
 end

@@ -16,7 +16,7 @@
         <%= f.text_field :end_date, id: "datepicker-end", value: @reservation.end_date.strftime() %>
         <%= f.hidden_field :location_id, value: @reservation.location.id %>
         <%= f.hidden_field :member_id, value: current_member.id %>
-        <%= f.submit "Confirm Reservation", class: "btn btn-warning" %>
+        <%= f.submit "Book Now", class: "btn btn-warning" %>
 
         <%= text_field_tag :card_number, "", class: "credit-card-number",
           "data-stripe" => "number", placeholder: "Credit Card Number",

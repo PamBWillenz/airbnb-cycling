@@ -36,7 +36,7 @@ feature "Member reserves a location" do
       fill_in "card_verification", with: "123"
       fill_in "address_zip", with: "10001"
 
-      click_button "Confirm Reservation"
+      click_button "Book Now"
 
       expect(page).to have_content "Reservation successfully created."
       expect(page).to have_content "THANKS FOR BOOKING WITH US!"
@@ -81,7 +81,7 @@ feature "Member reserves a location" do
       fill_in "card_verification", with: "123"
       fill_in "address_zip", with: "10001"
 
-      click_button "Confirm Reservation"
+      click_button "Book Now"
       sleep 5
       expect(page).to have_content "Your card was declined."
     end
@@ -111,7 +111,7 @@ feature "Member reserves a location" do
       fill_in "card_verification", with: "88"
       fill_in "address_zip", with: "10001"
 
-      click_button "Confirm Reservation"
+      click_button "Book Now"
       sleep 5
 
       expect(page).to have_content "Your card's security code is invalid."
@@ -142,7 +142,7 @@ feature "Member reserves a location" do
       fill_in "card_verification", with: "123"
       fill_in "address_zip", with: "10001"
 
-      click_button "Confirm Reservation"
+      click_button "Book Now"
       sleep 5
 
       expect(page).to have_content "Your card has expired."
@@ -174,7 +174,7 @@ feature "Member reserves a location" do
       fill_in "card_verification", with: "123"
       fill_in "address_zip", with: "10001"
 
-      click_button "Confirm Reservation"
+      click_button "Book Now"
 
       expect(page).to have_content "An error occurred while processing your card."
     end
