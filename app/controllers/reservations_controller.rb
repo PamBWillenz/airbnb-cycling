@@ -65,6 +65,7 @@ class ReservationsController < ApplicationController
   def charge_customer(source, location, reservation)
     CreditCardService.new({
       source: source,
+      location: location,
       reservation: reservation
     }).charge_customer
   end

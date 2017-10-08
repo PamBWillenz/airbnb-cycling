@@ -15,7 +15,7 @@ describe CreditCardService do
       end_date: Date.today + 2.days
     )
 
-    @token = stripe_helper.generate_card_toke()
+    @token = stripe_helper.generate_card_token()
   end
 
   after do 
@@ -31,6 +31,22 @@ describe CreditCardService do
       }).charge_customer
 
     expect(customer_charge.id).to eq "test_ch_3"
+    end
+  end
+
+  describe "#refund_customer" do 
+    it "refunds the customer" do 
+      customer_charge = CreditCardService.new({
+        source: @token,
+        location: location,
+        reservation: @reservation
+      }).charge_customer
+
+      @reservation.update_attributes(customer_charge_id: "test_ch_3")
+        refund = CreditCardService.new({
+          reservation: @reservation
+      }).refund_customer
+      expect(refund.id).to eq "test_ch_3"
     end
   end
 end

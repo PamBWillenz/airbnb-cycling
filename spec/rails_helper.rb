@@ -78,6 +78,10 @@ Capybara.javascript_driver = :webkit_with_qt_plugin_messages_suppressed
     config.allow_url("example.com")
     config.ignore_ssl_errors
     config.skip_image_loading
+
+    config.block_unknown_urls
+    config.allow_url("https://m.stripe.network/inner.html")
+    config.allow_url("m.stripe.network")
   end
 
   config.before(:each) do
