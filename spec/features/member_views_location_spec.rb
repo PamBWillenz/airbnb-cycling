@@ -13,6 +13,7 @@ feature "Member views location", js: true do
 
   scenario "by visiting location page", js: true do
     visit location_path(location)
+    expect(page).to have_content location.price
     expect(page).to have_css("div#map-container")
     #page.has_css?("td.fc-bgevent", count: 4)
   end

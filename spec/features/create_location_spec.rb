@@ -18,6 +18,7 @@ require "rails_helper"
         fill_in "location[postcode]", with: "90765"
         fill_in "location[bike_type]", with: "Mountain"
         fill_in "location[guests]", with: 1
+        fill_in "location[price]", with: 50.00
         
         click_button "Create Location"
 

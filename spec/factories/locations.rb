@@ -14,6 +14,7 @@ FactoryGirl.define do
         postcode "My Postcode"
         bike_type "Mountain"
         guests 1
+        price 50
         association :member, email: "hostemail@yopmail.com", stripe_user_id: "acct_1AwuagGqf7h6JOnP"
 
       factory :location_with_available_dates do

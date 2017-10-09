@@ -13,6 +13,7 @@ class Location < ApplicationRecord
                         :bike_type,
                         :guests,
                         :member_id
+                        :price
 
   geocoded_by :full_street_address
   after_validation :geocode, if: ->(obj){ obj.address_1.present? and obj.address_changed? }

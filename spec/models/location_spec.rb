@@ -15,6 +15,7 @@ RSpec.describe Location, type: :model do
     it { should validate_presence_of(:state) }
     it { should validate_presence_of(:bike_type) }
     it { should validate_presence_of(:guests) }
+    #it { should validate_presence_of(:price) }
 
     it do 
       should accept_nested_attributes_for(:location_images)
