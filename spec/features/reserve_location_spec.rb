@@ -37,14 +37,14 @@ feature "Member reserves a location" do
       fill_in "address_zip", with: "10001"
 
       click_button "Book Now"
-
+      sleep 5
       expect(page).to have_content "Reservation successfully created."
       expect(page).to have_content "THANKS FOR BOOKING WITH US!"
 
       expect(Reservation.count).to eq 1
       reservation = Reservation.last
 
-      expect(reservation).to have_attributes(id_for_credit_card_charge:
+      expect(reservation).to have_attributes(customer_charge_id:
         a_string_starting_with("ch"), location_id: location.id, member_id: member.id, 
         start_date: Date.current + 1.day, end_date: Date.today + 2.days)
 
@@ -83,7 +83,7 @@ feature "Member reserves a location" do
 
       click_button "Book Now"
       sleep 5
-      expect(page).to have_content "Your card was declined."
+      expect(page).to have_content "Your card number is incorrect."
     end
 
     scenario "stripe returns error for invalid cvc-code", js: true do 
@@ -105,10 +105,10 @@ feature "Member reserves a location" do
       click_button "Make a Reservation"
       expect(page).to have_content "Reservation Summary:"
 
-      fill_in "card_number", with: "4242 4242 4242 4242"
+      fill_in "card_number", with: "4000 0000 0000 0101"
       select "January"
       select "2020"
-      fill_in "card_verification", with: "88"
+      fill_in "card_verification", with: "880"
       fill_in "address_zip", with: "10001"
 
       click_button "Book Now"
@@ -136,7 +136,7 @@ feature "Member reserves a location" do
       click_button "Make a Reservation"
       expect(page).to have_content "Reservation Summary:"
 
-      fill_in "card_number", with: "4000 4000 4000 0069"
+      fill_in "card_number", with: "4000 0000 0000 0069"
       select "January"
       select "2020"
       fill_in "card_verification", with: "123"
