@@ -22,8 +22,6 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @token = params[:stripe_token]
 
-  binding.pry  
-
     if @reservation.valid?
       begin
         @customer_charge = charge_customer(@token, @location, @reservation)
