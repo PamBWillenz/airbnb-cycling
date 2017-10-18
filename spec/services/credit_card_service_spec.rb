@@ -34,19 +34,19 @@ describe CreditCardService do
     end
   end
 
-  describe "#refund_customer" do 
-    it "refunds the customer" do 
-      customer_charge = CreditCardService.new({
-        source: @token,
-        location: location,
-        reservation: @reservation
-      }).charge_customer
+  # describe "#refund_customer" do 
+  #   it "refunds the customer" do 
+  #     customer_charge = CreditCardService.new({
+  #       source: @token,
+  #       location: location,
+  #       reservation: @reservation
+  #     }).charge_customer
 
-      @reservation.update_attributes(customer_charge_id: "test_ch_3")
-        refund = CreditCardService.new({
-          reservation: @reservation
-      }).refund_customer
-      expect(refund.id).to eq "test_ch_3"
-    end
-  end
+  #     @reservation.update_attributes(customer_charge_id: "test_ch_3")
+  #       refund = CreditCardService.new({
+  #         reservation: @reservation
+  #     }).refund_customer
+  #     expect(refund.id).to eq "test_ch_3"
+  #   end
+  # end
 end

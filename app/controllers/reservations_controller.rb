@@ -26,23 +26,16 @@ class ReservationsController < ApplicationController
       begin
         @customer_charge = charge_customer(@token, @location, @reservation)
         @reservation.customer_charge_id = @customer_charge.id
+        @reservation.save
+        @reservation.dates_booked 
+        redirect_to confirmation_reservation_path(@reservation), notice: "Reservation successfully created."
       rescue Stripe::CardError => e 
         body = e.json_body
         message = body[:error][:message]
-        flash[:alert] = message
+        redirect_to location_path(@location), alert: message
       end
     else
-      flash[:alert] = "Some of the dates of your reservation are not available. Please try different dates."
-    end
-
-    respond_to do |format|
-      if !@customer_charge.nil?
-        @reservation.save
-        @reservation.dates_booked
-        format.html { redirect_to confirmation_reservation_path(@reservation), notice: "Reservation successfully created." }
-      else
-        format.html { redirect_to location_path(@location), alert: "Some of your dates on your reservation are not available. Please try different dates." }
-      end
+      redirect_to location_path(@location), alert: "Some of the dates of your reservation are not available. Please try different dates." 
     end
   end
 

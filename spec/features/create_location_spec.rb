@@ -35,7 +35,7 @@ require "rails_helper"
         picture_1_path = 'spec/fixtures/files/picture_1.jpg'
 
         attach_file "location[location_images_attributes][0][picture]", picture_1_path
-        click_button "UPDATE & SAVE"
+        click_button "UPDATE and SAVE"
 
         expect(LocationImage.count).to eq 1
         expect(LocationImage.first.picture_order).to eq 1

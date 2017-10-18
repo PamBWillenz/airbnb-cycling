@@ -75,7 +75,7 @@ feature "Member reserves a location" do
       click_button "Make a Reservation"
       expect(page).to have_content "Reservation Summary:"
 
-      fill_in "card_number", with: "4000 4000 4000 4002"
+      fill_in "card_number", with: "4000 0000 0000 4002"
       select "January"
       select "2020"
       fill_in "card_verification", with: "123"
@@ -105,7 +105,7 @@ feature "Member reserves a location" do
       click_button "Make a Reservation"
       expect(page).to have_content "Reservation Summary:"
 
-      fill_in "card_number", with: "4000 0000 0000 0101"
+      fill_in "card_number", with: "4000 0000 0000 0127"
       select "January"
       select "2020"
       fill_in "card_verification", with: "880"
@@ -114,7 +114,7 @@ feature "Member reserves a location" do
       click_button "Book Now"
       sleep 5
 
-      expect(page).to have_content "Your card's security code is invalid."
+      expect(page).to have_content "Your card's security code is incorrect."
     end
 
     scenario "card has expired", js: true do 
