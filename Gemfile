@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem "figaro"
 gem 'devise'
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", "~> 5.2.1"
 gem 'aws-sdk', '~> 2'
 gem 'pundit'
 gem 'bootstrap', '~> 4.0.0.alpha5'
@@ -66,6 +66,9 @@ gem 'rails_12factor', group: :production
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', '9.0.6'
+
+  gem 'vcr'
+  gem 'webmock'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   # gem 'web-console', '~> 2.0'

@@ -9,9 +9,18 @@ require 'capybara/rspec'
 require 'simple_bdd'
 require 'shoulda/matchers'
 require 'pundit/rspec'
+require 'vcr'
 include ActionDispatch::TestProcess
 
 ActiveRecord::Migration.maintain_test_schema!
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/support/vcr_cassettes'
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+  c.ignore_localhost = true
+  c.allow_http_connections_when_no_cassette = true
+end
 
 RSpec.configure do |config|
   
@@ -26,6 +35,10 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)
   end
+
+
+
+
 
   #Capybara.javascript_driver = :webkit
 

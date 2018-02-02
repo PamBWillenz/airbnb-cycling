@@ -76,8 +76,7 @@ GEM
     capybara-webkit (1.14.0)
       capybara (>= 2.3.0, < 2.14.0)
       json
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
+    climate_control (0.2.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.1)
@@ -88,7 +87,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    concurrent-ruby (1.0.2)
+    concurrent-ruby (1.0.5)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     dante (0.2.0)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
@@ -121,8 +122,10 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gmaps4rails (2.1.2)
+    hashdiff (0.3.7)
     hashie (3.5.6)
-    i18n (0.7.0)
+    i18n (0.9.3)
+      concurrent-ruby (~> 1.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -165,7 +168,7 @@ GEM
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
     mini_portile2 (2.1.0)
-    minitest (5.9.1)
+    minitest (5.11.3)
     momentjs-rails (2.17.1)
       railties (>= 3.1)
     multi_json (1.12.1)
@@ -190,7 +193,7 @@ GEM
       omniauth (~> 1.3)
       omniauth-oauth2 (~> 1.4)
     orm_adapter (0.5.0)
-    paperclip (5.0.0)
+    paperclip (5.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -264,6 +267,7 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    safe_yaml (1.0.4)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -294,22 +298,27 @@ GEM
       multi_json (~> 1.0)
       stripe (>= 2.0.3)
     thor (0.19.1)
-    thread_safe (0.3.5)
+    thread_safe (0.3.6)
     tilt (2.0.5)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
-    tzinfo (1.2.2)
+    tzinfo (1.2.4)
       thread_safe (~> 0.1)
     uglifier (3.0.2)
       execjs (>= 0.3.0, < 3)
     underscore-rails (1.8.3)
+    vcr (4.0.0)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (3.3.0)
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
+    webmock (3.3.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -347,7 +356,7 @@ DEPENDENCIES
   markerclustererplus-rails
   momentjs-rails
   omniauth-stripe-connect
-  paperclip (~> 5.0.0)
+  paperclip (~> 5.2.1)
   pg
   pickadate-rails
   pry
@@ -368,10 +377,12 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   underscore-rails
+  vcr
   web-console
+  webmock
 
 RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.15.3
+   1.16.1

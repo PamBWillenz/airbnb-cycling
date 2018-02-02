@@ -30,7 +30,7 @@ RSpec.describe Location, type: :model do
   end
 
   describe "#create_available_dates" do 
-    it "creates available dates for a date range for that location" do 
+    it "creates available dates for a date range for that location", :vcr do 
       location = FactoryGirl.create(:location)
       start_date = (Date.tomorrow).to_s
       end_date = (Date.today + 2.days).to_s
@@ -45,7 +45,7 @@ RSpec.describe Location, type: :model do
     end
 
     describe "#future_available_dates" do 
-      it "gathers all the future available dates" do 
+      it "gathers all the future available dates", :vcr do 
         location = FactoryGirl.create(:location_with_available_dates)
 
         results = location.future_available_dates
@@ -60,14 +60,15 @@ RSpec.describe Location, type: :model do
 
   describe ".nearby" do 
     it "searches the nearby location" do 
-      location = FactoryGirl.create(:location)
+      FactoryGirl.create(:location)
       address_search = "Sun Valley, Idaho"
+      location = Location.last
       expect(Location.nearby(address_search)).to include(location)
     end 
   end 
 
   describe ".with_available_dates" do 
-    it "searches for locations with available dates for reservation" do 
+    it "searches for locations with available dates for reservation", :vcr do 
       location = FactoryGirl.create(:location_with_available_dates)
       date_range_array = Date.tomorrow..Date.today + 2.days
       address_search = "Sun Valley, Idaho"
