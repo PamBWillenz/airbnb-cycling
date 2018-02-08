@@ -59,7 +59,7 @@ RSpec.describe Location, type: :model do
 
 
   describe ".nearby" do 
-    it "searches the nearby location" do 
+    it "searches the nearby location", :vcr do 
       FactoryGirl.create(:location)
       address_search = "Sun Valley, Idaho"
       location = Location.last
