@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe SearchForLocationService, type: :service do 
 
   describe "search for locations" do 
-    it "return locations when dates range and address are defined" do 
+    it "return locations when dates range and address are defined", :vcr do 
       location = FactoryGirl.create(:location)
       location.create_available_dates(Date.today, Date.today + 10.days)
 
