@@ -4,6 +4,7 @@ class ReservationsController < ApplicationController
 
   def index
     @reservations = Reservation.where(member_id: current_member.id).where("start_date >=?", Date.today)
+    #@reservations = Reservation.upcoming_for_member(member: current_member)
   end
 
   def new
@@ -44,6 +45,24 @@ class ReservationsController < ApplicationController
     @location = @reservation.location
   end
 
+  def cancel
+    @reservation = Reservation.find(params[:id])
+     begin
+       refund = refund_customer(@reservation)
+       @id_for_refund = refund[:refunds][:data][0][:id]
+     rescue Stripe::StripeError => e
+       body = e.json_body
+       message = body[:error][:message]
+       flash[:alert] =  message
+      end
+     if !@id_for_refund.nil?
+       @reservation.update_after_refund(@id_for_refund)
+       redirect_to reservations_path, notice: "Your reservation was successfully cancelled." 
+     else
+       redirect_to reservations_path
+     end
+  end
+
   private
 
   def set_reservation
@@ -61,5 +80,9 @@ class ReservationsController < ApplicationController
       location: location,
       reservation: reservation
     }).charge_customer
+  end
+
+  def refund_customer(reservation)
+    CreditCardService.new({ reservation: reservation}).refund_customer
   end
 end

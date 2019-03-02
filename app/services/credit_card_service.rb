@@ -20,6 +20,11 @@ class CreditCardService
       })
   end
 
+  def refund_customer
+    charge = Stripe::Charge.retrieve(@reservation.customer_charge_id)
+    charge.refund
+  end
+
   private
 
   def set_charge_attributes
