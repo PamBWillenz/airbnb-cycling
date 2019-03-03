@@ -28,7 +28,7 @@ RSpec.describe Reservation, type: :model do
      reservation.reload
      expect(reservation.id_for_refund).to eq id_for_refund
 
-     #available_dates = AvailableDate.where(location_id: location.id).where(available_date: reservation_array)
+     available_dates = AvailableDate.where(location_id: location.id).where(available_date: reservation_array)
      first_available_date = available_dates.first
      expect(first_available_date.booked).to eq false
     end
