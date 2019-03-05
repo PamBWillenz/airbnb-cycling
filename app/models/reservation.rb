@@ -2,7 +2,7 @@ class Reservation < ApplicationRecord
   belongs_to :member
   belongs_to :location
 
-  validate :dates_are_available
+  validate :dates_are_available, on: :create
 
   scope :upcoming, -> { where("start_date >= ?", Date.today) }
   scope :upcoming_for_member, ->(member) {
@@ -24,5 +24,11 @@ class Reservation < ApplicationRecord
       AvailableDate.where(location_id: location.id).where(available_date: date).update(booked: true)
     end
   end
-end
 
+  def update_after_refund(id_for_refund)
+    update(id_for_refund: id_for_refund)
+    reservation_array =  (start_date..end_date).to_a
+    available_dates = AvailableDate.where(location_id: location.id).where(available_date: reservation_array)
+    available_dates.update_all(booked: false)
+  end
+end
