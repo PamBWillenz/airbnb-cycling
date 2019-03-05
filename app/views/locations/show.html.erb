@@ -96,14 +96,10 @@
   handler.buildMap({ provider: {}, internal: {id: 'map-canvas'}}, function(){
     markers = handler.addCircle(<%=raw @coordinates.to_json %>);
     handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
+    handler.fitMapToBounds(markers);
     handler.getMap().setZoom(15);
-    toRender(<%=raw @coordinates.to_json %>)
   });
-  function toRender(response){
-    directionsDisplay = new google.maps.DirectionsRenderer();
-    directionsDisplay.setDirections(response);
-  }
+  
 
   $('#calendar').fullCalendar({
    events: '<%=@location.id%>.json',

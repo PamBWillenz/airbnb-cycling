@@ -13,6 +13,7 @@ feature "Guest cancels reservation" do
     visit reservations_path
     page.accept_confirm do 
       click_link "Cancel Reservation"
+      sleep 4
     end
     expect(page).to have_content "Your reservation was successfully cancelled."
     reservation = Reservation.last

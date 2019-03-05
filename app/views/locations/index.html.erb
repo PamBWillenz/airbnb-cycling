@@ -84,3 +84,13 @@ $(function() {
   $('#datepicker-end').pickadate()
 }); 
 </script>
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map-canvas'}}, function(){
+    markers = handler.addCircle(<%=raw @coordinates.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds(markers);
+    handler.getMap().setZoom(15);
+  });
+</script>
