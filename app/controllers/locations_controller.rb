@@ -2,8 +2,6 @@ class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy, :add_images, :remove_images, :calendar, :add_available_dates]
   before_action :authenticate_member!, only: [:new, :edit, :create, :update, :show, :destroy, :add_images, :calendar, :add_available_dates]
 
-  # GET /locations
-  # GET /locations.json
   def index
     if params[:commit].present?
     # if params [:start_date].present? || params[:end_date].present? || params[:address].present? || params[:bike_type].present? || params[:guests].present?
@@ -19,25 +17,19 @@ class LocationsController < ApplicationController
     end
   end
 
-  # GET /locations/1
-  # GET /locations/1.json
   def show
     @location_images = @location.location_images.all
     @coordinates = {lng: @location.longitude, lat: @location.latitude, radius: 800}
   end
 
-  # GET /locations/new
   def new
     @location = Location.new
   end
 
-  # GET /locations/1/edit
   def edit
     authorize @location
   end
 
-  # POST /locations
-  # POST /locations.json
   def create
     @location = Location.new(location_params)
 
@@ -53,8 +45,6 @@ class LocationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /locations/1
-  # PATCH/PUT /locations/1.json
   def update
     authorize @location
     respond_to do |format|
@@ -68,8 +58,6 @@ class LocationsController < ApplicationController
     end
   end
 
-  # DELETE /locations/1
-  # DELETE /locations/1.json
   def destroy
     authorize @location
     @location.destroy
@@ -107,7 +95,7 @@ class LocationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_location
       @location = Location.find(params[:id])
     end
