@@ -46,6 +46,8 @@ gem 'pickadate-rails'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 
+gem 'sprockets', '~>3.7.2'
+
 gem 'omniauth-stripe-connect'
 gem 'stripe'
 gem 'stripe-ruby-mock', '~> 2.5.0', :require => 'stripe_mock'
