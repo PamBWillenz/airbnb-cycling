@@ -27,5 +27,7 @@ Rails.application.routes.draw do
     get :confirmation, on: :member
     get :cancel, on: :member
   end
+
+  mount StripeEvent::Engine, at: '/stripe-web-hooks'
   
 end
