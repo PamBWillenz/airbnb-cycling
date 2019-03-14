@@ -51,6 +51,7 @@ gem 'sprockets', '~>3.7.2'
 gem 'omniauth-stripe-connect'
 gem 'stripe'
 gem 'stripe-ruby-mock', '~> 2.5.0', :require => 'stripe_mock'
+gem 'stripe_event'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
