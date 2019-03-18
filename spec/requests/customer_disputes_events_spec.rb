@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'stripe_mock'
+require 'stripe_mock' 
 
 describe "Customer Dispute Events" do
   
@@ -8,6 +8,7 @@ describe "Customer Dispute Events" do
     before do
       StripeMock.start
       @event = StripeMock.mock_webhook_event('charge.dispute.created')
+      #@event = Stripe::Event.retrieve("evt_1EEd1tKGa7MvTac7cvoKcpPk")
       ActionMailer::Base.deliveries.clear
     end
   

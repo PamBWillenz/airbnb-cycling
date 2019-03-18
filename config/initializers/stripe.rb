@@ -7,7 +7,7 @@ StripeEvent.signing_secret = ENV["stripe_signing_key"]
 StripeEvent.subscribe 'charge.dispute.created' do |event|
   event.class       #=> Stripe::Event
   event.type        #=> "charge.dispute.created"
-  event.data.object #=> #<Stripe::Charge:0x3fcb34c115f8>
+  event.data.object #=> #<Stripe::Dispute:0x3fcb34c115f8>
   #end
 CustomerDisputeMailer.send_admin_customer_dispute(event).deliver_now
 end
