@@ -50,7 +50,6 @@ gem 'sprockets', '~>3.7.2'
 
 gem 'omniauth-stripe-connect'
 gem 'stripe'
-gem 'stripe-ruby-mock', '~> 2.5.0', :require => 'stripe_mock'
 gem 'stripe_event'
 
 source 'https://rails-assets.org' do
@@ -75,6 +74,7 @@ group :development, :test do
 
   gem 'vcr'
   gem 'webmock'
+  gem 'stripe-ruby-mock', '~> 2.5.0', :require => 'stripe_mock'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   # gem 'web-console', '~> 2.0'
